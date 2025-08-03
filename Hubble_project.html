@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hubble Constant Project</title>
+  <meta charset="UTF-8">
+  <title>Estimating the Hubble Constant</title>
 </head>
 <body>
-    <h1>Estimating the Hubble Constant via Gravitational Waves</h1>
-    <p>This project involved developing a Python-based simulation to estimate the Hubble constant using gravitational wave signals from binary black hole mergers (dark sirens)...</p>
-    <ul>
-        <li>Used truncated Gaussian and Fisher distributions to simulate galaxy catalogs.</li>
-        <li>Ran Monte Carlo simulations to estimate likelihood over a range of $H_0$ values.</li>
-        <li>Studied host galaxy identification through probabilistic matching.</li>
-    </ul>
-    <p><a href="index.html">← Back to Portfolio</a></p>
+  <h1>Estimating the Hubble Constant via Gravitational-Wave Dark Sirens</h1>
+
+  <p>
+    Precise determination of the Hubble constant (<em>H₀</em>) remains a central puzzle in cosmology, owing to
+    persistent disagreements between early-Universe (CMB) and late-Universe (supernovae, Cepheids) measurements.
+    In this project, we explore a completely independent route: using gravitational-wave observations of binary
+    black-hole mergers—so-called “dark sirens”—to infer <em>H₀</em> without relying on any electromagnetic counterpart.
+  </p>
+
+  <h2>Aims</h2>
+  <p>
+    We simulate a population of mock black-hole merger events embedded in a realistic galaxy catalog. Our goals:
+  </p>
+  <ul>
+    <li>Validate a likelihood-based framework for statistically associating each gravitational-wave event with its host galaxy.</li>
+    <li>Recover frequentist point estimates of <em>H₀</em> by summing and maximizing joint likelihoods across many events.</li>
+    <li>Quantify uncertainties via Monte Carlo resampling and by constructing a full Bayesian posterior.</li>
+  </ul>
+
+  <h2>Methods</h2>
+  <ul>
+    <li>We generate distance measurements with 30% Gaussian uncertainty and sky localizations via a von Mises–Fisher model (5° spread).</li>
+    <li>Candidate hosts are drawn from the EAGLE simulation, filtered by stellar mass to mimic survey completeness.</li>
+    <li>For each merger, we compute joint angular × distance likelihoods over all galaxies, then combine them across N = 100 events.</li>
+    <li>Frequentist estimates come from maximizing the summed likelihood, while Monte Carlo resampling builds confidence intervals.</li>
+    <li>We also form a Bayesian posterior by multiplying per-event likelihoods and applying a uniform prior on <em>H₀</em> ∈ [40, 100] km s⁻¹ Mpc⁻¹.</li>
+  </ul>
+
+  <h2>Results</h2>
+  <p>
+    Over four independent realizations (100 events each), our recovered <em>H₀</em> values cluster between
+    68–72 km s⁻¹ Mpc⁻¹, bracketing the true input of 67 km s⁻¹ Mpc⁻¹. The combined Bayesian posterior yields
+    <strong>H₀ = 72.0<sub>−19.8</sub><sup>+17.9</sup> km s⁻¹ Mpc⁻¹</strong> (68% credible interval),
+    covering ≈ 60% of the prior range. Spline smoothing effectively reduces Monte Carlo noise in our likelihood curves.
+  </p>
+
+  <h2>Conclusions</h2>
+  <p>
+    Even without electromagnetic counterparts, gravitational-wave dark sirens can deliver competitive constraints
+    on the Universe’s expansion rate. Our hybrid frequentist + Bayesian + Monte Carlo approach provides a
+    robust framework. Scaling to the hundreds or thousands of future detections and leveraging deeper galaxy
+    catalogs will be key to resolving the “Hubble tension” in the next generation of gravitational-wave cosmology.
+  </p>
+
+  <p><a href="index.html">← Back to Portfolio</a></p>
 </body>
 </html>
