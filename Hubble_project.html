@@ -2,68 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estimating the Hubble Constant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; background-color: #f7f9fc; color: #333; }
-    h1, h2 { color: #2c3e50; }
-    h2 { margin-top: 1.5rem; border-bottom: 2px solid #ccc; padding-bottom: 0.3rem; }
-    ul { list-style-type: disc; margin-left: 1.5rem; }
-    li { margin: 0.5rem 0; }
-    a { color: #007acc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .back { margin-top: 2rem; display: block; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #1f2a38;
+    }
+    section {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    section h2 {
+      margin-top: 0;
+      color: #1f2a38;
+      border-bottom: 2px solid #e1e8ee;
+      padding-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    .resources {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: #fafbfd;
+      border-radius: 6px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    }
+    .card a {
+      display: block;
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+    .back {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .back a {
+      color: #0066cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Estimating the Hubble Constant via Gravitational-Wave Dark Sirens</h1>
+    </header>
 
-  <h1>Estimating the Hubble Constant via Gravitational-Wave Dark Sirens</h1>
+    <section>
+      <h2>Overview</h2>
+      <p>Precise determination of the Hubble constant (<em>H₀</em>) remains a central puzzle in cosmology, with early- and late-Universe methods in tension. This project uses gravitational-wave observations of binary black-hole mergers—so-called “dark sirens”—to measure <em>H₀</em> independently of electromagnetic data.</p>
+    </section>
 
-  <p>
-    Precise determination of the Hubble constant (<em>H₀</em>) remains a central puzzle in cosmology, owing to
-    persistent disagreements between early-Universe (CMB) and late-Universe (supernovae, Cepheids) measurements.
-    In this project, I explore a completely independent route: using gravitational-wave observations of binary
-    black-hole mergers—so-called “dark sirens”—to infer <em>H₀</em> without relying on any electromagnetic counterpart.
-  </p>
+    <section>
+      <h2>Aims</h2>
+      <ul>
+        <li>Validate a statistical framework for associating each event with its host galaxy.</li>
+        <li>Recover frequentist point estimates of <em>H₀</em> via combined likelihood maximization.</li>
+        <li>Quantify uncertainties using Monte Carlo resampling and Bayesian posterior construction.</li>
+      </ul>
+    </section>
 
-  <h2>Aims</h2>
-  <ul>
-    <li>Validate a likelihood-based framework for statistically associating each gravitational-wave event with its host galaxy.</li>
-    <li>Recover frequentist point estimates of <em>H₀</em> by summing and maximizing joint likelihoods across many events.</li>
-    <li>Quantify uncertainties via Monte Carlo resampling and by constructing a full Bayesian posterior.</li>
-  </ul>
+    <section>
+      <h2>Methods</h2>
+      <ul>
+        <li>Generate distance measurements (30% Gaussian uncertainty) and sky localizations (von Mises–Fisher, 5° spread).</li>
+        <li>Draw candidate hosts from EAGLE simulation data, filtered by stellar mass.</li>
+        <li>Compute joint angular &amp; distance likelihoods for N = 100 events.</li>
+        <li>Maximize summed likelihood for frequentist <em>H₀</em> estimates; resample for confidence intervals.</li>
+        <li>Build Bayesian posterior with uniform prior on <em>H₀</em> ∈ [40, 100] km⋅s⁻¹⋅Mpc⁻¹.</li>
+      </ul>
+    </section>
 
-  <h2>Methods</h2>
-  <ul>
-    <li>I generate distance measurements with 30% Gaussian uncertainty and sky localizations via a von Mises–Fisher model (5° spread).</li>
-    <li>Candidate hosts are drawn from the EAGLE simulation, filtered by stellar mass to mimic survey completeness.</li>
-    <li>For each merger, I compute joint angular × distance likelihoods over all galaxies, then combine them across N = 100 events.</li>
-    <li>Frequentist estimates come from maximizing the summed likelihood, while Monte Carlo resampling builds confidence intervals.</li>
-    <li>I also form a Bayesian posterior by multiplying per-event likelihoods and applying a uniform prior on <em>H₀</em> ∈ [40, 100] km s⁻¹ Mpc⁻¹.</li>
-  </ul>
+    <section>
+      <h2>Results</h2>
+      <p>Across four independent runs (100 events each), recovered <em>H₀</em> values cluster 68–72 km⋅s⁻¹⋅Mpc⁻¹, bracketing the true input of 67 km⋅s⁻¹⋅Mpc⁻¹. The Bayesian posterior yields <strong>H₀ = 72.0<sub>−19.8</sub><sup>+17.9</sup> km⋅s⁻¹⋅Mpc⁻¹</strong> (68% credible interval). Spline smoothing reduces Monte Carlo noise effectively.</p>
+    </section>
 
-  <h2>Results</h2>
-  <p>
-    Over four independent realizations (100 events each), our recovered <em>H₀</em> values cluster between
-    68–72 km s⁻¹ Mpc⁻¹, bracketing the true input of 67 km s⁻¹ Mpc⁻¹. The combined Bayesian posterior yields
-    <strong>H₀ = 72.0<sub>−19.8</sub><sup>+17.9</sup> km s⁻¹ Mpc⁻¹</strong> (68% credible interval),
-    covering ≈ 60% of the prior range. Spline smoothing effectively reduces Monte Carlo noise in our likelihood curves.
-  </p>
+    <section>
+      <h2>Conclusions &amp; Future Work</h2>
+      <p>Gravitational-wave dark sirens can provide meaningful constraints on the expansion rate, independent of electromagnetic counterparts. Scaling to larger samples and deeper galaxy catalogs will be crucial to resolving the Hubble tension in upcoming gravitational-wave surveys.</p>
+    </section>
 
-  <h2>Conclusions</h2>
-  <p>
-    Even without electromagnetic counterparts, gravitational-wave dark sirens can deliver competitive constraints
-    on the Universe’s expansion rate. Our hybrid frequentist + Bayesian + Monte Carlo approach provides a
-    robust framework. Scaling to the hundreds or thousands of future detections and leveraging deeper galaxy
-    catalogs will be key to resolving the “Hubble tension” in the next generation of gravitational-wave cosmology.
-  </p>
+    <section>
+      <h2>Resources</h2>
+      <div class="resources">
+        <div class="card">
+          <h3>Simulation Images</h3>
+          <a href="simulation-images.html">View Gallery →</a>
+        </div>
+        <div class="card">
+          <h3>Source Code</h3>
+          <a href="simulation-code.html">View on GitHub →</a>
+        </div>
+        <div class="card">
+          <h3>Project Report</h3>
+          <a href="project-report.html">Read PDF →</a>
+        </div>
+      </div>
+    </section>
 
-  <h2>Resources</h2>
-  <ul>
-    <li><a href="simulation-images.html">View Simulation Images</a></li>
-    <li><a href="simulation-code.html">Access Simulation Source Code</a></li>
-    <li><a href="project-report.html"> Read my Project Report</a></li>
-  </ul>
-
-  <a class="back" href="index.html">← Back to Portfolio</a>
+    <div class="back">
+      <a href="index.html">← Back to Portfolio</a>
+    </div>
+  </div>
 </body>
 </html>
