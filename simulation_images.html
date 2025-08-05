@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulation Images Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: #0a0a1a; color: #e0e0e0; }
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    header { text-align: center; margin-bottom: 2rem; }
+    header h1 { color: #ffdd57; font-size: 2.5rem; margin: 0; }
+    header p { color: #ccc; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-item {
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+    }
+    .caption {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .back { text-align: center; margin: 2rem 0; }
+    .back a { color: #ffdd57; text-decoration: none; font-weight: 700; }
+    .back a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Simulation Images Gallery</h1>
+      <p>Click an image to learn more about each simulation output</p>
+    </header>
+    <div class="gallery">
+      <div class="gallery-item">
+        <a href="simulation_3d_galaxy.html">
+          <img src="images/3d_galaxy_plot.png" alt="3D Galaxy Distribution">
+          <div class="caption">3D Galaxy Distribution</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="simulation_dgw_dtrue.html">
+          <img src="images/dgw_dtrue_galaxy_284892.png" alt="Distance Ratio Histogram">
+          <div class="caption">d_GW / d_true Histogram</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="simulation_web_plot.html">
+          <img src="images/galactic_web_plot.png" alt="Projected Density Map">
+          <div class="caption">Projected Density Map</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="simulation_distance_hist.html">
+          <img src="images/histogram_of_all_galaxy_distances.png" alt="All Galaxy Distances Histogram">
+          <div class="caption">Galaxy Distance Histogram</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="simulation_rotation.html">
+          <img src="images/rotation.png" alt="Rotated 3D Density Cube">
+          <div class="caption">3D Density Cube</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="simulation_pdf.html">
+          <img src="images/pdf_plot.png" alt="Polar Offset PDF">
+          <div class="caption">Polar Offset PDF</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="simulation_likelihood.html">
+          <img src="images/run4.png" alt="Likelihood Spline Fit">
+          <div class="caption">Likelihood Spline Fit</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="simulation_posterior.html">
+          <img src="images/bayesian_posterior.png" alt="Bayesian Posterior PDF">
+          <div class="caption">Bayesian Posterior PDF</div>
+        </a>
+      </div>
+    </div>
+    <div class="back">
+      <a href="Hubble_project.html">← Back to Project Page</a>
+    </div>
+  </div>
+</body>
+</html> 
