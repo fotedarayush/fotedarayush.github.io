@@ -43,7 +43,7 @@
       padding: 0.75rem 1rem; z-index: 2;
     }
     .identity { display: flex; align-items: center; gap: 0.65rem; }
-    .identity img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; }
+    .identity img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; cursor: zoom-in; }
     .identity .name { font-weight: 800; letter-spacing: 0.3px; color: var(--accent); }
 
     .navlinks { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -84,6 +84,13 @@
     .card a:hover { text-decoration: underline; }
 
     footer { text-align: center; color: var(--muted); padding: 2rem 1rem 3rem; }
+    /* Modal (lightbox) for enlarging profile photo */
+    .photo-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); z-index: 999; }
+    .photo-modal.open { display: flex; }
+    .photo-modal__img { max-width: min(92vw, 720px); max-height: 85vh; border-radius: 12px; border: 3px solid var(--accent); box-shadow: 0 20px 60px rgba(0,0,0,0.6); transform: scale(.85); opacity: 0; animation: pop-in .18s ease-out forwards; }
+    .photo-modal__close { position: absolute; top: 20px; right: 24px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; width: 36px; height: 36px; font-size: 22px; line-height: 34px; cursor: pointer; }
+    body.modal-open { overflow: hidden; }
+    @keyframes pop-in { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   </style>
 </head>
 <body>
@@ -174,9 +181,36 @@
       © <span id="year"></span> Ayush Fotedar · Built with HTML & CSS
     </footer>
   </div>
+  <!-- Modal markup for enlarged profile photo -->
+  <div class="photo-modal" id="photoModal" aria-hidden="true">
+    <button class="photo-modal__close" aria-label="Close">×</button>
+    <img src="profile_photo_me.jpg" alt="Ayush Fotedar" class="photo-modal__img" />
+  </div>
+
   <script>
     // set year automatically
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightbox for topbar profile photo
+    const thumb = document.querySelector('.identity img');
+    const modal = document.getElementById('photoModal');
+    const closeBtn = modal.querySelector('.photo-modal__close');
+
+    function openModal() {
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    thumb.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
