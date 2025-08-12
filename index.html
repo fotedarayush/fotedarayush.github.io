@@ -1,56 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ayush Fotedar – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Roboto', sans-serif; background: #1a1a1a; color: #e0e0e0; }
-    nav {
-      position: fixed; top: 0; left: 0; height: 100vh; width: 250px;
-      background: #111; display: flex; flex-direction: column; align-items: center;
-      padding: 2rem 1rem;
+    :root {
+      --bg-overlay: rgba(10, 10, 25, 0.75);
+      --accent: #ffdd57;
+      --text: #eaeaea;
+      --muted: #bdbdbd;
+      --card: rgba(0, 0, 0, 0.55);
     }
-    nav img { border-radius: 50%; width: 120px; height: 120px; margin-bottom: 1rem; }
-    nav h2 { color: #ffdd57; margin-bottom: 0.5rem; }
-    nav p { color: #888; margin-bottom: 2rem; text-align: center; }
-    nav a { color: #ccc; text-decoration: none; margin: 0.5rem 0; font-weight: 700; transition: color 0.2s; }
-    nav a:hover { color: #ffdd57; }
-    main {
-      margin-left: 250px; padding: 4rem 2rem;
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      /* ONE photo only – used as the translucent background */
+      background: url('profile_photo.jpg') center / cover fixed no-repeat;
+      position: relative;
     }
-    .hero { display: flex; align-items: center; justify-content: space-between; }
-    .hero-text { max-width: 60%; }
-    .hero-text h1 { font-size: 3rem; color: #ffdd57; margin-bottom: 1rem; }
-    .hero-text p { font-size: 1.1rem; color: #ccc; margin-bottom: 2rem; }
-    .hero-text a { background: #ffdd57; color: #111; padding: 0.8rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 700; transition: background 0.2s; }
-    .hero-text a:hover { background: #e6c846; }
-    .hero-img img { width: 300px; border-radius: 8px; }
+    /* dark translucent overlay on top of the background photo */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(80% 80% at 70% 30%, rgba(0,0,0,0.2), transparent 50%), var(--bg-overlay);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; }
+
+    /* Top bar with quick links */
+    .topbar {
+      position: sticky; top: 0; backdrop-filter: blur(6px);
+      background: rgba(0,0,0,0.35);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1rem; z-index: 2;
+    }
+    .brand { font-weight: 700; letter-spacing: 0.3px; color: var(--accent); }
+    .navlinks { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .navlinks a { color: var(--text); text-decoration: none; font-weight: 700; opacity: 0.9; }
+    .navlinks a:hover { color: #fff; }
+
+    /* Hero card */
+    .hero {
+      max-width: 980px; margin: 8vh auto 3rem; padding: 2rem; border-radius: 16px;
+      background: var(--card);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+    .hero h1 { margin: 0 0 0.5rem; font-size: clamp(2rem, 5vw, 3rem); color: var(--accent); }
+    .hero p { margin: 0 0 1.25rem; color: var(--muted); font-size: 1.05rem; line-height: 1.65; }
+    .cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.8rem 1.2rem; border-radius: 10px; font-weight: 700;
+      text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn-primary { background: var(--accent); color: #111; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.35); }
+    .btn-ghost { background: rgba(255,255,255,0.08); color: var(--text); border: 1px solid rgba(255,255,255,0.12); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+
+    /* Link grid */
+    .grid { max-width: 980px; margin: 0 auto 4rem; display: grid; gap: 1rem; padding: 0 1rem; }
+    @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+    .card {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px; padding: 1.1rem; backdrop-filter: blur(4px);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.45); border-color: rgba(255,221,87,0.35); }
+    .card h3 { margin: 0 0 0.5rem; color: var(--accent); font-size: 1.05rem; }
+    .card ul { list-style: none; margin: 0; padding: 0; }
+    .card li { margin: 0.35rem 0; }
+    .card a { color: var(--text); text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
+
+    footer { text-align: center; color: var(--muted); padding: 2rem 1rem 3rem; }
   </style>
 </head>
 <body>
-  <nav>
-    <img src="profile_photo.jpg" alt="Ayush Photo">
-    <h2>Ayush Fotedar</h2>
-    <p>MPhys (Hons)<br>Univ. of Leicester</p>
-    <a href="Hubble_project.html">Projects</a>
-    <a href="simulation_images.html">Gallery</a>
-    <a href="#publications">Publications</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <main>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">Ayush Fotedar</div>
+      <nav class="navlinks">
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="simulation_images.html">Gallery</a>
+        <a href="Hubble_project.html">Hubble Project</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
     <section class="hero">
-      <div class="hero-text">
-        <h1>Hello, I'm Ayush</h1>
-        <p>Astrophysics enthusiast &amp; computational researcher. I explore gravitational-wave cosmology, simulation, and data analysis to unravel the universe's expansion mysteries.</p>
-        <a href="Hubble_project.html">Explore Projects</a>
-      </div>
-      <div class="hero-img">
-        <img src="profile_photo.jpg" alt="Ayush Portrait">
+      <h1>Hello, I'm Ayush</h1>
+      <p>
+        Astrophysics researcher focused on gravitational‑wave cosmology, statistical host association, and
+        large‑scale simulations. Explore my projects, publications, and visuals below.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="Hubble_project.html">Explore Projects</a>
+        <a class="btn btn-ghost" href="simulation_images.html">View Simulation Gallery</a>
+        <a class="btn btn-ghost" href="mailto:ayushf007@gmail.com" id="contact">Email Me</a>
       </div>
     </section>
-  </main>
+
+    <!-- Link grid: one place with links for everything -->
+    <div class="grid" id="projects">
+      <div class="card">
+        <h3>Projects</h3>
+        <ul>
+          <li><a href="Hubble_project.html">Estimating the Hubble Constant via Dark Sirens</a></li>
+          <li><a href="fermi_bubbles.html">Fermi Bubbles & SMBH Feedback</a></li>
+          <li><a href="femtosecond_laser.html">Femtosecond Laser Micro‑Machining</a></li>
+        </ul>
+      </div>
+      <div class="card" id="publications">
+        <h3>Publications</h3>
+        <ul>
+          <li><a href="https://journals.le.ac.uk/index.php/pst/article/view/4788/4818" target="_blank" rel="noopener">Atmospheric Ignition – Main Author</a></li>
+          <li><a href="https://journals.le.ac.uk/index.php/pst/article/view/4840/4864" target="_blank" rel="noopener">33 Gigawatts to Oblivion – Main Author</a></li>
+          <li><a href="piezo_power.html">Piezoelectric Power Generation – Main Author</a></li>
+          <li><a href="luna_ring.html">Luna Ring – Co‑Author</a></li>
+          <li><a href="ceresian_spin.html">Ceresian Spin Station – Co‑Author</a></li>
+          <li><a href="king_stadium.html">King Solar Power Stadium – Co‑Author</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Gallery & Code</h3>
+        <ul>
+          <li><a href="simulation_images.html">Simulation Images</a></li>
+          <li><a href="simulation_code.html">Simulation Source Code</a></li>
+          <li><a href="project_report.html">Project Report (PDF)</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Interests</h3>
+        <ul>
+          <li>General Relativity & Quantum Fields</li>
+          <li>Gravitational‑Wave Astronomy</li>
+          <li>Cosmology & Large‑Scale Structure</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Hobbies</h3>
+        <ul>
+          <li>Table‑Tennis & Badminton</li>
+          <li>Astrophotography</li>
+          <li>Coding (Python, SQL, R)</li>
+        </ul>
+      </div>
+      <div class="card" id="contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:ayushf007@gmail.com">Email</a></li>
+          <li><a href="https://github.com/fotedarayush" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/ayush-fotedar-8110301b5/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Ayush Fotedar · Built with HTML & CSS
+    </footer>
+  </div>
+  <script>
+    // set year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
