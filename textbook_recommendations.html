@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Textbook Recommendations – Ayush Fotedar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg-overlay:rgba(10,10,25,.75);--accent:#ffdd57;--text:#eaeaea;--muted:#bdbdbd;--card:rgba(0,0,0,.55)}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:'Roboto',sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,.2),transparent 50%),var(--bg-overlay);pointer-events:none;z-index:0}
+    .wrap{position:relative;z-index:1}
+    .topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;z-index:2}
+    .identity{display:flex;align-items:center;gap:.65rem}
+    .identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);object-fit:cover;cursor:zoom-in}
+    .identity .name{font-weight:800;letter-spacing:.3px;color:var(--accent)}
+    .navlinks{display:flex;gap:1rem;flex-wrap:wrap}
+    .navlinks a{color:var(--text);text-decoration:none;font-weight:700;opacity:.9}
+    .navlinks a:hover{color:#fff}
+    main{max-width:980px;margin:6vh auto 4rem;padding:0 1rem}
+    h1{color:var(--accent);margin:0 0 .75rem}
+    p.lead{color:var(--muted);margin:.25rem 0 1.25rem}
+    .grid{display:grid;gap:1rem}
+    @media(min-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem}
+    .card h2{margin:.1rem 0 .5rem;font-size:1.15rem;color:var(--accent)}
+    .card ul{margin:.35rem 0 0;padding-left:1rem}
+    .card li{margin:.35rem 0}
+    .note{color:var(--muted);font-size:.9rem;margin-top:.75rem}
+    .photo-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);z-index:999}
+    .photo-modal.open{display:flex}
+    .photo-modal__img{max-width:min(92vw,720px);max-height:85vh;border-radius:12px;border:3px solid var(--accent);box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.85);opacity:0;animation:pop-in .18s ease-out forwards}
+    .photo-modal__close{position:absolute;top:20px;right:24px;background:rgba(0,0,0,.5);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:999px;width:36px;height:36px;font-size:22px;line-height:34px;cursor:pointer}
+    @keyframes pop-in{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+    footer{text-align:center;color:var(--muted);padding:2rem 1rem 3rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="identity">
+        <img src="profile_photo_me.jpg" alt="Ayush Fotedar"><span class="name">Ayush Fotedar</span>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="articles.html">Articles</a>
+        <a href="textbook_recommendations.html">Textbooks</a>
+        <a href="simulation_images.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Textbook Recommendations</h1>
+      <p class="lead">Core texts I’ve found clear and useful. Start with the “Foundation” picks, then dive deeper.</p>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Classical Mechanics</h2>
+          <ul>
+            <li><strong>Taylor</strong> — <em>Classical Mechanics</em> (Foundation)</li>
+            <li><strong>Goldstein</strong> — <em>Classical Mechanics</em> (Advanced)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Electromagnetism</h2>
+          <ul>
+            <li><strong>Griffiths</strong> — <em>Introduction to Electrodynamics</em> (Foundation)</li>
+            <li><strong>Jackson</strong> — <em>Classical Electrodynamics</em> (Advanced)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Quantum Mechanics</h2>
+          <ul>
+            <li><strong>Griffiths &amp; Schroeter</strong> — <em>Introduction to Quantum Mechanics</em> (Foundation)</li>
+            <li><strong>Sakurai &amp; Napolitano</strong> — <em>Modern Quantum Mechanics</em> (Advanced)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Statistical Mechanics</h2>
+          <ul>
+            <li><strong>Reif</strong> — <em>Fundamentals of Statistical and Thermal Physics</em> (Foundation)</li>
+            <li><strong>Pathria &amp; Beale</strong> — <em>Statistical Mechanics</em> (Advanced)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>General Relativity & Cosmology</h2>
+          <ul>
+            <li><strong>Carroll</strong> — <em>Spacetime and Geometry</em> (GR Foundation)</li>
+            <li><strong>Dodelson</strong> — <em>Modern Cosmology</em> (Cosmology Foundation)</li>
+            <li><strong>Wald</strong> — <em>General Relativity</em> (Advanced)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Computation & Data</h2>
+          <ul>
+            <li><strong>Press et al.</strong> — <em>Numerical Recipes</em></li>
+            <li><strong>Bishop</strong> — <em>Pattern Recognition and Machine Learning</em></li>
+          </ul>
+        </div>
+      </section>
+
+      <p class="note">Tip: Pair each textbook with a problem source (e.g., past papers or Schaum’s outlines) and your own summary notes.</p>
+    </main>
+
+    <footer>© <span id="year"></span> Ayush Fotedar</footer>
+  </div>
+
+  <div class="photo-modal" id="photoModal" aria-hidden="true">
+    <button class="photo-modal__close" aria-label="Close">×</button>
+    <img src="profile_photo_me.jpg" alt="Ayush Fotedar" class="photo-modal__img"/>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const thumb=document.querySelector('.identity img'); const modal=document.getElementById('photoModal'); const closeBtn=modal.querySelector('.photo-modal__close');
+    const open=()=>{modal.classList.add('open');document.body.classList.add('modal-open');modal.setAttribute('aria-hidden','false')}
+    const close=()=>{modal.classList.remove('open');document.body.classList.remove('modal-open');modal.setAttribute('aria-hidden','true')}
+    thumb.addEventListener('click',open); closeBtn.addEventListener('click',close);
+    modal.addEventListener('click',e=>{ if(e.target===modal) close(); }); document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+  </script>
+</body>
+</html>
