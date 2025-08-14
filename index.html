@@ -91,6 +91,16 @@
     .photo-modal__close { position: absolute; top: 20px; right: 24px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; width: 36px; height: 36px; font-size: 22px; line-height: 34px; cursor: pointer; }
     body.modal-open { overflow: hidden; }
     @keyframes pop-in { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    /* Updates section */
+    .filters { max-width: 980px; margin: 0 auto 0.75rem; padding: 0 1rem; display:flex; gap:.5rem; flex-wrap:wrap; }
+    .filter-btn { background: rgba(255,255,255,0.08); color: var(--text); border:1px solid rgba(255,255,255,0.12); border-radius:999px; padding:.35rem .8rem; font-weight:700; cursor:pointer; }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); color:#111; border-color: rgba(0,0,0,0.15); }
+    .updates { max-width: 980px; margin: 0 auto 2rem; padding: 0 1rem; display:grid; gap:1rem; }
+    .update-card { background: var(--card); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:1rem 1.1rem; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .update-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.45); border-color: rgba(255,221,87,0.35); }
+    .update-card h4 { margin:0 0 .35rem; }
+    .meta { font-size:.85rem; color: var(--muted); margin-bottom:.5rem; display:flex; gap:.5rem; align-items:center; }
+    .badge { background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color: var(--text); border-radius:999px; padding:.15rem .55rem; font-size:.75rem; }
   </style>
 </head>
 <body>
@@ -101,87 +111,49 @@
         <span class="name">Ayush Fotedar</span>
       </div>
       <nav class="navlinks">
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
+        <a href="index.html">Home</a>
+        <a href="articles.html">Articles</a>
+        <a href="textbook_recommendations.html">Textbooks</a>
         <a href="simulation_images.html">Gallery</a>
-        <a href="Hubble_project.html">Hubble Project</a>
-        <a href="#contact">Contact</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </header>
 
     <section class="hero">
       <h1>Hello, I'm Ayush</h1>
       <p>
-        I am an early-career theoretical physicist with an MPhys (Integrated Masters) in Physics & Astrophysics 
-        from the University of Leicester. My interests centre on string theory and physical mathematics, quantum field theory, 
-        general relativity, and cosmology. For my specialist project, I built a Python-based dark standard siren simulation and, 
-        in a fully Bayesian framework, recovered H_0 ≈ 72 km s⁻¹ Mpc⁻¹ from simulated gravitational wave events. 
-        I aim for mathematical rigour, symmetry principles, Lagrangian/Hamiltonian methods, and differential geometry. 
-        I also led student societies (President, Physics Society; Vice-President, AstRoSoc), organising workshops and trips. 
-        I’m now seeking to work on moduli spaces, quantum corrections, sigma models, and dualities.
-
+        Astrophysics researcher focused on gravitational‑wave cosmology, statistical host association, and
+        large‑scale simulations. Explore my projects, publications, and visuals below.
       </p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="Hubble_project.html">Explore Projects</a>
-        <a class="btn btn-ghost" href="simulation_images.html">View Simulation Gallery</a>
-        <a class="btn btn-ghost" href="mailto:ayushf007@gmail.com" id="contact">Email Me</a>
+        <a class="btn btn-primary" href="articles.html">Read Articles</a>
+        <a class="btn btn-ghost" href="textbook_recommendations.html">Textbook Recommendations</a>
+        <a class="btn btn-ghost" href="contact.html">Contact Me</a>
       </div>
     </section>
 
-    <!-- Link grid: one place with links for everything -->
-    <div class="grid" id="projects">
-      <div class="card">
-        <h3>Projects</h3>
-        <ul>
-          <li><a href="Hubble_project.html">Estimating the Hubble Constant via Dark Sirens</a></li>
-          <li><a href="fermi_bubbles.html">Fermi Bubbles & SMBH Feedback</a></li>
-          <li><a href="femtosecond_laser.html">Femtosecond Laser Micro‑Machining</a></li>
-        </ul>
-      </div>
-      <div class="card" id="publications">
-        <h3>Publications</h3>
-        <ul>
-          <li><a href="https://journals.le.ac.uk/index.php/pst/article/view/4788/4818" target="_blank" rel="noopener">Atmospheric Ignition – Main Author</a></li>
-          <li><a href="https://journals.le.ac.uk/index.php/pst/article/view/4840/4864" target="_blank" rel="noopener">33 Gigawatts to Oblivion – Main Author</a></li>
-          <li><a href="piezo_power.html">Piezoelectric Power Generation – Main Author</a></li>
-          <li><a href="luna_ring.html">Luna Ring – Co‑Author</a></li>
-          <li><a href="ceresian_spin.html">Ceresian Spin Station – Co‑Author</a></li>
-          <li><a href="king_stadium.html">King Solar Power Stadium – Co‑Author</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Gallery & Code</h3>
-        <ul>
-          <li><a href="simulation_images.html">Simulation Images</a></li>
-          <li><a href="simulation_code.html">Simulation Source Code</a></li>
-          <li><a href="project_report.html">Project Report (PDF)</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Interests</h3>
-        <ul>
-          <li>General Relativity & Quantum Fields</li>
-          <li>Gravitational‑Wave Astronomy</li>
-          <li>Cosmology & Large‑Scale Structure</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Hobbies</h3>
-        <ul>
-          <li>Table‑Tennis & Badminton</li>
-          <li>Astrophotography</li>
-          <li>Coding (Python, SQL, R)</li>
-        </ul>
-      </div>
-      <div class="card" id="contact">
-        <h3>Contact</h3>
-        <ul>
-          <li><a href="mailto:ayushf007@gmail.com">Email</a></li>
-          <li><a href="https://github.com/fotedarayush" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/ayush-fotedar-8110301b5/" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
-      </div>
+    <!-- Latest Updates (Home) -->
+    <div class="filters" aria-label="Filter updates">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="life">Life</button>
+      <button class="filter-btn" data-filter="physics">Physics</button>
     </div>
+
+    <section class="updates" id="home">
+      <article class="update-card" data-category="life">
+        <h4>Moved to London for MSc</h4>
+        <div class="meta"><span class="badge">Life</span><span>Aug 2025</span></div>
+        <p>Settling in, mapping out study spots and late-night coffee options. Excited to meet my cohort and supervisors.</p>
+      </article>
+
+      <article class="update-card" data-category="physics">
+        <h4>Dark‑Siren H₀ Poster Accepted</h4>
+        <div class="meta"><span class="badge">Physics</span><span>Aug 2025</span></div>
+        <p>Poster on likelihood‑based host association accepted. Bayesian posterior and frequentist estimates agree within uncertainties.</p>
+      </article>
+
+      <!-- Duplicate an article to add more updates. Set data-category to "life" or "physics". -->
+    </section>
 
     <footer>
       © <span id="year"></span> Ayush Fotedar · Built with HTML & CSS
@@ -217,6 +189,20 @@
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    // Simple filter for Latest Updates
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.update-card');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        cards.forEach(card => {
+          card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
+        });
+      });
+    });
   </script>
 </body>
 </html>
