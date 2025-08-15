@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Articles – Ayush Fotedar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    :root { --bg-overlay: rgba(10,10,25,0.75); --accent:#ffdd57; --text:#eaeaea; --muted:#bdbdbd; --card:rgba(0,0,0,0.55); }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:'Roboto',sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
-    body::before{content:"";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,0.2),transparent 50%),var(--bg-overlay);pointer-events:none;z-index:0}
+    :root{--bg-overlay:rgba(10,10,25,.75);--accent:#ffdd57;--text:#eaeaea;--muted:#bdbdbd;--card:rgba(0,0,0,.55)}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,.2),transparent 50%),var(--bg-overlay);pointer-events:none;z-index:0}
     .wrap{position:relative;z-index:1}
-    .topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,0.35);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;z-index:2}
+    .topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;z-index:2}
     .identity{display:flex;align-items:center;gap:.65rem}
-    .identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);object-fit:cover;cursor:zoom-in}
+    .identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);object-fit:cover}
     .identity .name{font-weight:800;letter-spacing:.3px;color:var(--accent)}
-    .navlinks{display:flex;gap:1rem;flex-wrap:wrap}
     .navlinks a{color:var(--text);text-decoration:none;font-weight:700;opacity:.9}
     .navlinks a:hover{color:#fff}
-    main{max-width:980px;margin:6vh auto 4rem;padding:0 1rem}
+    main{max-width:1000px;margin:7vh auto 4rem;padding:0 1rem}
     h1{color:var(--accent);margin:0 0 .75rem}
     p.lead{color:var(--muted);margin:.25rem 0 1.25rem}
-    .articles{display:grid;gap:1rem}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:1rem 1.1rem;transition:transform .18s,box-shadow .18s,border-color .18s}
+    h2{margin:1.5rem 0 .5rem;color:var(--accent)}
+    .grid{display:grid;gap:1rem}
+    @media(min-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;transition:transform .18s,box-shadow .18s,border-color .18s}
     .card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.45);border-color:rgba(255,221,87,.35)}
-    .card h3{margin:.1rem 0 .35rem}
-    .meta{font-size:.85rem;color:var(--muted);margin-bottom:.5rem}
-    .tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.35rem}
-    .tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.15rem .55rem;font-size:.75rem}
-    .photo-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);z-index:999}
-    .photo-modal.open{display:flex}
-    .photo-modal__img{max-width:min(92vw,720px);max-height:85vh;border-radius:12px;border:3px solid var(--accent);box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.85);opacity:0;animation:pop-in .18s ease-out forwards}
-    .photo-modal__close{position:absolute;top:20px;right:24px;background:rgba(0,0,0,.5);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:999px;width:36px;height:36px;font-size:22px;line-height:34px;cursor:pointer}
-    body.modal-open{overflow:hidden}
-    @keyframes pop-in{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+    .card h3{margin:.1rem 0 .2rem}
+    .meta{font-size:.85rem;color:var(--muted);margin-bottom:.6rem}
+    .badges{display:flex;gap:.35rem;flex-wrap:wrap;margin:.35rem 0}
+    .badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.15rem .55rem;font-size:.75rem}
+    .actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
+    .btn{display:inline-block;padding:.55rem .9rem;border-radius:10px;font-weight:700;text-decoration:none}
+    .btn-primary{background:var(--accent);color:#111}
+    .btn-ghost{background:rgba(255,255,255,.08);color:var(--text);border:1px solid rgba(255,255,255,.12)}
     footer{text-align:center;color:var(--muted);padding:2rem 1rem 3rem}
   </style>
 </head>
@@ -41,56 +39,116 @@
   <div class="wrap">
     <header class="topbar">
       <div class="identity">
-        <img src="profile_photo_me.jpg" alt="Ayush Fotedar">
-        <span class="name">Ayush Fotedar</span>
+        <img src="profile_photo_me.jpg" alt="Ayush Fotedar"><span class="name">Ayush Fotedar</span>
       </div>
-      <nav class="navlinks">
-        <a href="index.html">Home</a>
-        <a href="textbook_recommendations.html">Textbooks</a>
-        <a href="simulation_images.html">Gallery</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+      <nav class="navlinks"><a href="index.html">Home</a></nav>
     </header>
 
     <main>
       <h1>Articles</h1>
-      <p class="lead">Notes, explainers, and project write-ups. (I’ll keep adding as I go.)</p>
+      <p class="lead">All my writing in one place: peer‑reviewed publications and informal essays/notes.</p>
 
-      <section class="articles">
+      <!-- Published section -->
+      <h2>Published</h2>
+      <section class="grid">
         <article class="card">
-          <h3><a href="Hubble_project.html" style="color:inherit;text-decoration:none;">Dark Sirens &amp; H₀: A Practical Walkthrough</a></h3>
-          <div class="meta">Posted Aug 2025 • 8 min read</div>
-          <p>A hands-on guide to simulating BBH events, host association, and building a combined likelihood/posterior for the Hubble constant.</p>
-          <div class="tags"><span class="tag">cosmology</span><span class="tag">GW</span><span class="tag">simulation</span></div>
+          <h3>Atmospheric Ignition</h3>
+          <div class="meta">Physics Special Topics • Main author</div>
+          <p>Could a nuclear detonation ignite the atmosphere? A careful probability estimate and what past fears missed.</p>
+          <div class="badges"><span class="badge">Main author</span></div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://journals.le.ac.uk/index.php/pst/article/view/4788/4818" target="_blank" rel="noopener">Read on journal site</a>
+          </div>
         </article>
 
         <article class="card">
-          <h3><a href="#" style="color:inherit;text-decoration:none;">Bayes vs. Frequentist (for Physicists)</a></h3>
-          <div class="meta">Draft • 6 min read</div>
-          <p>Where they agree, where they differ, and how I use both in practice for robust inference.</p>
-          <div class="tags"><span class="tag">statistics</span><span class="tag">methods</span></div>
+          <h3>33 Gigawatts to Oblivion</h3>
+          <div class="meta">Physics Special Topics • Main author</div>
+          <p>Back‑of‑the‑envelope energy scaling for a headline nuclear explosion, with context and caveats.</p>
+          <div class="badges"><span class="badge">Main author</span></div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://journals.le.ac.uk/index.php/pst/article/view/4840/4864" target="_blank" rel="noopener">Read on journal site</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Piezoelectric Power Generation for Street Lights</h3>
+          <div class="meta">Concept study • Main author</div>
+          <p>Feasibility of harvesting vibrational energy from footfall/traffic to offset lighting demand.</p>
+          <div class="badges"><span class="badge">Main author</span></div>
+          <div class="actions">
+            <a class="btn btn-ghost" href="files/piezoelectric_power_street_lights.pdf" target="_blank" rel="noopener">PDF (local)</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Luna Ring: A Hypothetical Outcome of a Major Asteroid Impact</h3>
+          <div class="meta">Concept study • Co‑author</div>
+          <p>Post‑impact debris dynamics and the plausibility of a circumlunar ring after a major collision.</p>
+          <div class="badges"><span class="badge">Co‑author</span></div>
+          <div class="actions">
+            <a class="btn btn-ghost" href="files/luna_ring.pdf" target="_blank" rel="noopener">PDF (local)</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Ceresian Spin Station</h3>
+          <div class="meta">Habitat design • Co‑author</div>
+          <p>Rotating, artificial‑gravity station concept leveraging Ceres’ environment and in‑situ resources.</p>
+          <div class="badges"><span class="badge">Co‑author</span></div>
+          <div class="actions">
+            <a class="btn btn-ghost" href="files/ceresian_spin_station.pdf" target="_blank" rel="noopener">PDF (local)</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>King Solar Power Stadium</h3>
+          <div class="meta">Sustainable design • Co‑author</div>
+          <p>Stadium concept powered primarily by integrated solar generation and efficient load management.</p>
+          <div class="badges"><span class="badge">Co‑author</span></div>
+          <div class="actions">
+            <a class="btn btn-ghost" href="files/king_solar_power_stadium.pdf" target="_blank" rel="noopener">PDF (local)</a>
+          </div>
         </article>
       </section>
+
+      <!-- Personal essays/notes section -->
+      <h2>Essays & Notes</h2>
+      <section class="grid">
+        <article class="card">
+          <h3>Dark Sirens, Explained Simply</h3>
+          <div class="meta">Cosmology • Notes</div>
+          <p>A step‑by‑step walkthrough of how dark sirens constrain H₀ without an electromagnetic counterpart.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="essay_dark_sirens_explained.html">Read note</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Quick Guide to the Cosmic Distance Ladder</h3>
+          <div class="meta">Cosmology • Primer</div>
+          <p>An accessible overview of rungs from parallax to supernovae, and where tensions can arise.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="essay_cosmic_distance_ladder.html">Read note</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Numerical Tricks for Likelihood Smoothing</h3>
+          <div class="meta">Computation • Tip</div>
+          <p>Notes on spline fitting, grid spacing, and log‑likelihood stability in Monte‑Carlo pipelines.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="essay_likelihood_smoothing.html">Read note</a>
+          </div>
+        </article>
+      </section>
+
+      <p class="lead" style="margin-top:1.2rem">Want a full list of peer‑reviewed pieces only? See <a href="published_articles.html">Published Articles</a>.</p>
     </main>
 
     <footer>© <span id="year"></span> Ayush Fotedar</footer>
   </div>
 
-  <!-- modal for enlarged profile -->
-  <div class="photo-modal" id="photoModal" aria-hidden="true">
-    <button class="photo-modal__close" aria-label="Close">×</button>
-    <img src="profile_photo_me.jpg" alt="Ayush Fotedar" class="photo-modal__img"/>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const thumb = document.querySelector('.identity img');
-    const modal = document.getElementById('photoModal');
-    const closeBtn = modal.querySelector('.photo-modal__close');
-    const open=()=>{modal.classList.add('open');document.body.classList.add('modal-open');modal.setAttribute('aria-hidden','false')}
-    const close=()=>{modal.classList.remove('open');document.body.classList.remove('modal-open');modal.setAttribute('aria-hidden','true')}
-    thumb.addEventListener('click',open); closeBtn.addEventListener('click',close);
-    modal.addEventListener('click',e=>{ if(e.target===modal) close(); }); document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
-  </script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
