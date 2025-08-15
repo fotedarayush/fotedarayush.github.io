@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ayush Fotedar – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Ayush Fotedar – Home</title>
   <style>
     :root {
       --bg-overlay: rgba(10, 10, 25, 0.75);
@@ -17,9 +16,9 @@
     html, body { height: 100%; }
     body {
       margin: 0;
-      font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
-      /* ONE photo only – used as the translucent background */
+      /* ONE photo only – translucent background */
       background: url('profile_photo_stars.jpg') center / cover fixed no-repeat;
       position: relative;
     }
@@ -34,7 +33,7 @@
     }
     .wrap { position: relative; z-index: 1; }
 
-    /* Top bar with quick links */
+    /* Top bar */
     .topbar {
       position: sticky; top: 0; backdrop-filter: blur(6px);
       background: rgba(0,0,0,0.35);
@@ -46,6 +45,7 @@
     .identity img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; cursor: zoom-in; }
     .identity .name { font-weight: 800; letter-spacing: 0.3px; color: var(--accent); }
 
+    /* Only Contact link in header */
     .navlinks { display: flex; gap: 1rem; flex-wrap: wrap; }
     .navlinks a { color: var(--text); text-decoration: none; font-weight: 700; opacity: 0.9; }
     .navlinks a:hover { color: #fff; }
@@ -68,30 +68,7 @@
     .btn-ghost { background: rgba(255,255,255,0.08); color: var(--text); border: 1px solid rgba(255,255,255,0.12); }
     .btn-ghost:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
 
-    /* Link grid */
-    .grid { max-width: 980px; margin: 0 auto 4rem; display: grid; gap: 1rem; padding: 0 1rem; }
-    @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-    .card {
-      background: var(--card); border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 14px; padding: 1.1rem; backdrop-filter: blur(4px);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.45); border-color: rgba(255,221,87,0.35); }
-    .card h3 { margin: 0 0 0.5rem; color: var(--accent); font-size: 1.05rem; }
-    .card ul { list-style: none; margin: 0; padding: 0; }
-    .card li { margin: 0.35rem 0; }
-    .card a { color: var(--text); text-decoration: none; }
-    .card a:hover { text-decoration: underline; }
-
-    footer { text-align: center; color: var(--muted); padding: 2rem 1rem 3rem; }
-    /* Modal (lightbox) for enlarging profile photo */
-    .photo-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); z-index: 999; }
-    .photo-modal.open { display: flex; }
-    .photo-modal__img { max-width: min(92vw, 720px); max-height: 85vh; border-radius: 12px; border: 3px solid var(--accent); box-shadow: 0 20px 60px rgba(0,0,0,0.6); transform: scale(.85); opacity: 0; animation: pop-in .18s ease-out forwards; }
-    .photo-modal__close { position: absolute; top: 20px; right: 24px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; width: 36px; height: 36px; font-size: 22px; line-height: 34px; cursor: pointer; }
-    body.modal-open { overflow: hidden; }
-    @keyframes pop-in { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    /* Updates section */
+    /* Filters + updates */
     .filters { max-width: 980px; margin: 0 auto 0.75rem; padding: 0 1rem; display:flex; gap:.5rem; flex-wrap:wrap; }
     .filter-btn { background: rgba(255,255,255,0.08); color: var(--text); border:1px solid rgba(255,255,255,0.12); border-radius:999px; padding:.35rem .8rem; font-weight:700; cursor:pointer; }
     .filter-btn.active, .filter-btn:hover { background: var(--accent); color:#111; border-color: rgba(0,0,0,0.15); }
@@ -101,14 +78,23 @@
     .update-card h4 { margin:0 0 .35rem; }
     .meta { font-size:.85rem; color: var(--muted); margin-bottom:.5rem; display:flex; gap:.5rem; align-items:center; }
     .badge { background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color: var(--text); border-radius:999px; padding:.15rem .55rem; font-size:.75rem; }
+
+    footer { text-align: center; color: var(--muted); padding: 2rem 1rem 3rem; }
+
+    /* Modal (photo lightbox) */
+    .photo-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);z-index:999}
+    .photo-modal.open{display:flex}
+    .photo-modal__img{max-width:min(92vw,720px);max-height:85vh;border-radius:12px;border:3px solid var(--accent);box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.85);opacity:0;animation:pop-in .18s ease-out forwards}
+    .photo-modal__close{position:absolute;top:20px;right:24px;background:rgba(0,0,0,.5);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:999px;width:36px;height:36px;font-size:22px;line-height:34px;cursor:pointer}
+    body.modal-open{overflow:hidden}
+    @keyframes pop-in{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
       <div class="identity">
-        <img src="profile_photo_me.jpg" alt="Ayush Fotedar">
-        <span class="name">Ayush Fotedar</span>
+        <img src="profile_photo_me.jpg" alt="Ayush Fotedar"><span class="name">Ayush Fotedar</span>
       </div>
       <nav class="navlinks">
         <a href="contact.html">Contact</a>
@@ -119,12 +105,13 @@
       <h1>Hello, I'm Ayush</h1>
       <p>
         Astrophysics researcher focused on gravitational‑wave cosmology, statistical host association, and
-        large‑scale simulations. Explore my projects, publications, and visuals below.
+        large‑scale simulations. Explore my latest updates and jump into articles, textbooks, gallery, and projects below.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="articles.html">Read Articles</a>
         <a class="btn btn-ghost" href="textbook_recommendations.html">Textbook Recommendations</a>
         <a class="btn btn-ghost" href="simulation_images.html">View Gallery</a>
+        <a class="btn btn-ghost" href="Hubble_project.html">Projects</a>
       </div>
     </section>
 
@@ -137,21 +124,21 @@
 
     <section class="updates" id="home">
       <article class="update-card" data-category="physics">
-  <h4>“Atmospheric Ignition” cited on Wikipedia</h4>
-  <div class="meta"><span class="badge">Physics</span><span>Aug 2025</span></div>
-  <p>
-    Excited to share that my Physics Special Topics paper “Atmospheric Ignition” was referenced on Wikipedia’s
-    “Effects of nuclear explosions.” Read it here:
-    <a href="https://en.wikipedia.org/wiki/Effects_of_nuclear_explosions" target="_blank" rel="noopener">
-      Effects of nuclear explosions
-    </a>.
-  </p>
-</article>
+        <h4>“Atmospheric Ignition” cited on Wikipedia</h4>
+        <div class="meta"><span class="badge">Physics</span><span>Aug 2025</span></div>
+        <p>
+          Excited to share that my Physics Special Topics paper “Atmospheric Ignition” was referenced on Wikipedia’s
+          “Effects of nuclear explosions.” Read it here:
+          <a href="https://en.wikipedia.org/wiki/Effects_of_nuclear_explosions" target="_blank" rel="noopener">
+            Effects of nuclear explosions
+          </a>.
+        </p>
+      </article>
 
       <article class="update-card" data-category="physics">
         <h4>Dark‑Siren H₀ Poster — View Online</h4>
         <div class="meta"><span class="badge">Physics</span><span>Aug 2025</span></div>
-        <p>A concise poster summarizing my likelihood‑based host‑association framework and H₀ inference from gravitational‑wave dark sirens. 
+        <p>A concise poster summarizing my likelihood‑based host‑association framework and H₀ inference from gravitational‑wave dark sirens.
           <a href="files/219046104_AyushFotedar_PA4900_Poster.pdf" target="_blank" rel="noopener">View / download the PDF</a>.
         </p>
       </article>
@@ -163,6 +150,7 @@
       © <span id="year"></span> Ayush Fotedar · Built with HTML & CSS
     </footer>
   </div>
+
   <!-- Modal markup for enlarged profile photo -->
   <div class="photo-modal" id="photoModal" aria-hidden="true">
     <button class="photo-modal__close" aria-label="Close">×</button>
