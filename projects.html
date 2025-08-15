@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects – Ayush Fotedar</title>
+  <style>
+    :root{--bg-overlay:rgba(10,10,25,.75);--accent:#ffdd57;--text:#eaeaea;--muted:#bdbdbd;--card:rgba(0,0,0,.55)}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,.2),transparent 50%),var(--bg-overlay);pointer-events:none;z-index:0}
+    .wrap{position:relative;z-index:1}
+    .topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;z-index:2}
+    .identity{display:flex;align-items:center;gap:.65rem}
+    .identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);object-fit:cover}
+    .identity .name{font-weight:800;letter-spacing:.3px;color:var(--accent)}
+    .navlinks a{color:var(--text);text-decoration:none;font-weight:700;opacity:.9}
+    .navlinks a:hover{color:#fff}
+    main{max-width:1000px;margin:7vh auto 4rem;padding:0 1rem}
+    h1{color:var(--accent);margin:0 0 .75rem}
+    p.lead{color:var(--muted);margin:.25rem 0 1.25rem}
+    .grid{display:grid;gap:1rem}
+    @media(min-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;transition:transform .18s,box-shadow .18s,border-color .18s}
+    .card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.45);border-color:rgba(255,221,87,.35)}
+    .card h3{margin:.1rem 0 .2rem}
+    .meta{font-size:.85rem;color:var(--muted);margin-bottom:.6rem}
+    .actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
+    .btn{display:inline-block;padding:.55rem .9rem;border-radius:10px;font-weight:700;text-decoration:none}
+    .btn-primary{background:var(--accent);color:#111}
+    .btn-ghost{background:rgba(255,255,255,.08);color:var(--text);border:1px solid rgba(255,255,255,.12)}
+    footer{text-align:center;color:var(--muted);padding:2rem 1rem 3rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="identity">
+        <img src="profile_photo_me.jpg" alt="Ayush Fotedar"><span class="name">Ayush Fotedar</span>
+      </div>
+      <nav class="navlinks"><a href="index.html">Home</a></nav>
+    </header>
+
+    <main>
+      <h1>Projects</h1>
+      <p class="lead">A quick overview of selected projects. Click through for details or open the full reports.</p>
+
+      <section class="grid">
+        <!-- H0 via GW dark sirens -->
+        <article class="card">
+          <h3>Estimating H₀ with Gravitational‑Wave Dark Sirens</h3>
+          <div class="meta">GW likelihood host‑association • frequentist + Bayesian</div>
+          <p>Simulated BBH dark sirens with a realistic galaxy catalogue to infer the Hubble constant using a joint likelihood framework.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="project_hubble_dark_sirens.html">Read more</a>
+            <a class="btn btn-ghost" href="files/PA4900_report.pdf" target="_blank" rel="noopener">Report (PDF)</a>
+          </div>
+        </article>
+
+        <!-- Fermi bubbles / Sgr A* -->
+        <article class="card">
+          <h3>Fermi Bubbles & Sgr A*: Shock‑Driven Modelling</h3>
+          <div class="meta">SNR phases • bubble energetics • SMBH feedback</div>
+          <p>Modelled supernova remnant phases and applied them to the Milky Way’s Fermi Bubbles to explore expansion and energy budgets.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="project_fermi_bubbles.html">Read more</a>
+            <a class="btn btn-ghost" href="files/PA3900_fermi_bubbles.pdf" target="_blank" rel="noopener">Report (PDF)</a>
+          </div>
+        </article>
+
+        <!-- GR / Schwarzschild -->
+        <article class="card">
+          <h3>Schwarzschild Geometry & Mercury’s Perihelion</h3>
+          <div class="meta">exact solutions • geodesics • precession</div>
+          <p>Derived and analysed the Schwarzschild metric, geodesic motion, and the relativistic perihelion advance; discussed Kerr/RN extensions.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="project_general_relativity_schwarzschild.html">Read more</a>
+            <a class="btn btn-ghost" href="files/GR_schwarzschild_report.pdf" target="_blank" rel="noopener">Report (PDF)</a>
+          </div>
+        </article>
+
+        <!-- Fs-laser -->
+        <article class="card">
+          <h3>Femtosecond Laser Micromachining (FIB‑SEM)</h3>
+          <div class="meta">ablation • EBSD/SEM • recipes</div>
+          <p>In‑situ micromachining and characterization: trench depth vs hatches/power, minimal thermal damage, and EBSD/SEM analysis.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="project_femtosecond_laser.html">Read more</a>
+            <a class="btn btn-ghost" href="files/fs_laser_applications.pptx" target="_blank" rel="noopener">Slides (PPTX)</a>
+          </div>
+        </article>
+
+        <!-- Graphene / QTS -->
+        <article class="card">
+          <h3>Graphene Band Structure & Fermi Velocity</h3>
+          <div class="meta">DFT/ABINIT • convergence • Dirac cone</div>
+          <p>Calculated graphene’s bands with ABINIT, ran convergence tests, identified the Dirac point, and extracted the Fermi velocity.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="project_graphene_band_structure.html">Read more</a>
+            <a class="btn btn-ghost" href="files/QTS_graphene.pdf" target="_blank" rel="noopener">Report (PDF)</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> Ayush Fotedar</footer>
+  </div>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Estimating H₀ with GW Dark Sirens – Ayush Fotedar</title>
+<style>
+:root{--bg:rgba(10,10,25,.75);--accent:#ffdd57;--text:#eaeaea;--muted:#bdbdbd;--card:rgba(0,0,0,.55)}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,.2),transparent 50%),var(--bg);z-index:0}
+.wrap{position:relative;z-index:1}
+.topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem}
+.identity{display:flex;align-items:center;gap:.65rem}.identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);object-fit:cover}
+.identity .name{font-weight:800;color:var(--accent)}
+.nav a{color:var(--text);text-decoration:none;font-weight:700;opacity:.9}
+.nav a:hover{color:#fff}
+main{max-width:980px;margin:7vh auto 4rem;padding:0 1rem}
+h1{color:var(--accent);margin:0 0 .5rem} .lead{color:var(--muted)}
+section{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;margin-top:1rem}
+.resources a{color:var(--accent);font-weight:700;text-decoration:none}
+footer{text-align:center;color:var(--muted);padding:2rem 1rem 3rem}
+</style>
+</head><body><div class="wrap">
+<header class="topbar">
+  <div class="identity"><img src="profile_photo_me.jpg" alt=""><span class="name">Ayush Fotedar</span></div>
+  <nav class="nav"><a href="projects.html">Back to Projects</a></nav>
+</header>
+
+<main>
+  <h1>Estimating H₀ with Gravitational-Wave Dark Sirens</h1>
+  <p class="lead">Simulations of binary black-hole (BBH) “dark sirens” + realistic galaxy catalogs to infer the Hubble constant via a joint likelihood host-association framework.</p>
+
+  <section>
+    <h2>Overview</h2>
+    <p>This project validates a likelihood-based scheme to statistically associate BBH events with host galaxies and combine many events to estimate the Hubble constant H₀. It blends frequentist point estimation with a Bayesian posterior across independent events.</p>
+  </section>
+  <section>
+    <h2>Methods</h2>
+    <ul>
+      <li>Mock GW distances with 30% Gaussian uncertainty; sky localizations from a truncated von Mises–Fisher model (~5°).</li>
+      <li>Candidate hosts from a realistic galaxy set filtered by stellar mass.</li>
+      <li>Per-event joint angular × distance likelihood over galaxies; combined across N events.</li>
+      <li>Frequentist: maximize summed likelihood; Bayesian: multiply event likelihoods with a broad H₀ prior.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Results</h2>
+    <ul>
+      <li>Recovered H₀ clustered near the truth within uncertainties; Bayesian posterior consistent with simulations.</li>
+      <li>Spline smoothing reduced Monte-Carlo noise in likelihood curves.</li>
+    </ul>
+  </section>
+  <section class="resources">
+    <h2>Resources</h2>
+    <p><a href="files/PA4900_report.pdf" target="_blank" rel="noopener">Open the full report (PDF)</a></p>
+  </section>
+</main>
+
+<footer>© <span id="y"></span> Ayush Fotedar</footer>
+</div><script>document.getElementById('y').textContent=new Date().getFullYear()</script></body></html>

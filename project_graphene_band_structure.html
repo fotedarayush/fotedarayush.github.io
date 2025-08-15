@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Graphene Band Structure – Ayush Fotedar</title>
+<style>/* same base styles */ :root{--bg:rgba(10,10,25,.75);--accent:#ffdd57;--text:#eaeaea;--muted:#bdbdbd;--card:rgba(0,0,0,.55)}*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}body::before{content:\"\";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,.2),transparent 50%),var(--bg)}.wrap{position:relative;z-index:1}.topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem}.identity{display:flex;align-items:center;gap:.65rem}.identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent)}.identity .name{font-weight:800;color:var(--accent)}.nav a{color:var(--text);text-decoration:none;font-weight:700;opacity:.9}.nav a:hover{color:#fff}main{max-width:980px;margin:7vh auto 4rem;padding:0 1rem}h1{color:var(--accent)}section{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;margin-top:1rem}footer{text-align:center;color:var(--muted);padding:2rem 1rem 3rem}</style></head>
+<body><div class="wrap">
+<header class="topbar"><div class="identity"><img src="profile_photo_me.jpg" alt=""><span class="name">Ayush Fotedar</span></div><nav class="nav"><a href="projects.html">Back to Projects</a></nav></header>
+<main>
+  <h1>Graphene: Bands, Dirac Cone & Fermi Velocity</h1>
+  <section><h2>Overview</h2><p>DFT/ABINIT calculations of graphene’s electronic band structure. Performed plane-wave and k-grid convergence tests, mapped Γ–K–Γ path, identified the Dirac point, and extracted v<sub>F</sub>.</p></section>
+  <section><h2>Method Notes</h2><ul><li>HGH pseudopotential; large z-vacuum to mimic 2D monolayer.</li><li>ecut and nk-mesh convergence, then non-SCF band path sampling.</li><li>Post-processing to estimate Fermi velocity near K.</li></ul></section>
+  <section><h2>Resources</h2><p><a href=\"files/QTS_graphene.pdf\" target=\"_blank\" rel=\"noopener\">Open the report (PDF)</a></p></section>
+</main>
+<footer>© <span id=\"y\"></span> Ayush Fotedar</footer>
+</div><script>document.getElementById('y').textContent=new Date().getFullYear()</script></body></html>
