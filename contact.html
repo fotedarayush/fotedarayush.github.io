@@ -4,35 +4,37 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact – Ayush Fotedar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     :root{--bg-overlay:rgba(10,10,25,.75);--accent:#ffdd57;--text:#eaeaea;--muted:#bdbdbd;--card:rgba(0,0,0,.55)}
     *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:'Roboto',sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
     body::before{content:"";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,.2),transparent 50%),var(--bg-overlay);pointer-events:none;z-index:0}
     .wrap{position:relative;z-index:1}
     .topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;z-index:2}
     .identity{display:flex;align-items:center;gap:.65rem}
     .identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);object-fit:cover;cursor:zoom-in}
     .identity .name{font-weight:800;letter-spacing:.3px;color:var(--accent)}
-    .navlinks{display:flex;gap:1rem;flex-wrap:wrap}
+    /* Only Home link on the right */
+    .navlinks{display:flex;gap:1rem}
     .navlinks a{color:var(--text);text-decoration:none;font-weight:700;opacity:.9}
     .navlinks a:hover{color:#fff}
     main{max-width:720px;margin:8vh auto 4rem;padding:0 1rem}
     h1{color:var(--accent);margin:0 0 .75rem}
     p.lead{color:var(--muted);margin:.25rem 0 1.25rem}
-    form{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;display:grid;gap:.75rem}
+    form{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;display:grid;gap:.9rem}
     label{font-weight:700}
-    input,textarea{width:100%;padding:.75rem;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.35);color:var(--text)}
+    input,textarea{width:100%;padding:.8rem;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.35);color:var(--text)}
     textarea{min-height:140px;resize:vertical}
-    .row{display:grid;gap:.75rem}
+    .row{display:grid;gap:.9rem}
     @media(min-width:640px){.row{grid-template-columns:1fr 1fr}}
-    .btn{display:inline-block;padding:.8rem 1.2rem;border-radius:10px;font-weight:700;text-decoration:none}
+    .btn{display:inline-block;padding:.9rem 1.2rem;border-radius:10px;font-weight:700;text-decoration:none}
     .btn-primary{background:var(--accent);color:#111;border:none;cursor:pointer}
-    .links{margin-top:1rem;display:grid;gap:.35rem}
-    .links a{color:var(--text);text-decoration:none}
-    .links a:hover{text-decoration:underline}
+    .status{font-size:.95rem}
+    .status.pending{color:#ffe48a}
+    .status.ok{color:#8cff9a}
+    .status.err{color:#ff8a8a}
     footer{text-align:center;color:var(--muted);padding:2rem 1rem 3rem}
+    /* Modal (re-using the photo lightbox from index) */
     .photo-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);z-index:999}
     .photo-modal.open{display:flex}
     .photo-modal__img{max-width:min(92vw,720px);max-height:85vh;border-radius:12px;border:3px solid var(--accent);box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.85);opacity:0;animation:pop-in .18s ease-out forwards}
@@ -48,18 +50,15 @@
       </div>
       <nav class="navlinks">
         <a href="index.html">Home</a>
-        <a href="articles.html">Articles</a>
-        <a href="textbook_recommendations.html">Textbooks</a>
-        <a href="simulation_images.html">Gallery</a>
-        <a href="contact.html">Contact</a>
       </nav>
     </header>
 
     <main>
       <h1>Contact</h1>
-      <p class="lead">Best way to reach me is email. You can also use this quick form:</p>
+      <p class="lead">Send me a message below — it will submit without leaving this page and show a confirmation.</p>
 
-      <form action="mailto:ayushf007@gmail.com" method="post" enctype="text/plain">
+      <!-- NOTE: This uses a lightweight external form endpoint to work on GitHub Pages. Replace FORM_ENDPOINT in the script. -->
+      <form id="contactForm" novalidate>
         <div class="row">
           <div>
             <label for="name">Name</label>
@@ -74,32 +73,79 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
         </div>
-        <button class="btn btn-primary" type="submit">Send</button>
+        <button class="btn btn-primary" type="submit" id="sendBtn">Send</button>
+        <div id="formStatus" class="status" role="status" aria-live="polite"></div>
       </form>
 
-      <div class="links">
-        <strong>Also find me at:</strong>
-        <a href="mailto:ayushf007@gmail.com">Email: ayushf007@gmail.com</a>
-        <a href="https://github.com/fotedarayush" target="_blank" rel="noopener">GitHub: @fotedarayush</a>
-        <a href="https://www.linkedin.com/in/ayush-fotedar-8110301b5/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
+      <noscript>
+        <p class="status err">JavaScript is required to send without leaving the page. You can email me directly at <a href="mailto:ayushf007@gmail.com">ayushf007@gmail.com</a>.</p>
+      </noscript>
     </main>
 
     <footer>© <span id="year"></span> Ayush Fotedar</footer>
   </div>
 
+  <!-- Photo lightbox (same behavior as index) -->
   <div class="photo-modal" id="photoModal" aria-hidden="true">
     <button class="photo-modal__close" aria-label="Close">×</button>
     <img src="profile_photo_me.jpg" alt="Ayush Fotedar" class="photo-modal__img"/>
   </div>
 
   <script>
+    // Year stamp
     document.getElementById('year').textContent = new Date().getFullYear();
-    const thumb=document.querySelector('.identity img'); const modal=document.getElementById('photoModal'); const closeBtn=modal.querySelector('.photo-modal__close');
-    const open=()=>{modal.classList.add('open');document.body.classList.add('modal-open');modal.setAttribute('aria-hidden','false')}
-    const close=()=>{modal.classList.remove('open');document.body.classList.remove('modal-open');modal.setAttribute('aria-hidden','true')}
+
+    // Photo lightbox
+    const thumb=document.querySelector('.identity img');
+    const modal=document.getElementById('photoModal');
+    const closeBtn=modal.querySelector('.photo-modal__close');
+    const open=()=>{modal.classList.add('open');document.body.classList.add('modal-open');modal.setAttribute('aria-hidden','false')};
+    const close=()=>{modal.classList.remove('open');document.body.classList.remove('modal-open');modal.setAttribute('aria-hidden','true')};
     thumb.addEventListener('click',open); closeBtn.addEventListener('click',close);
     modal.addEventListener('click',e=>{ if(e.target===modal) close(); }); document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+
+    // ===== Contact Form: AJAX submit with success message (no redirect) =====
+    // IMPORTANT: Replace this with your Formspree (or similar) endpoint.
+    const FORM_ENDPOINT = 'https://formspree.io/f/mdkdjbve';
+
+    const form = document.getElementById('contactForm');
+    const statusBox = document.getElementById('formStatus');
+    const sendBtn = document.getElementById('sendBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusBox.textContent = 'Sending…';
+      statusBox.className = 'status pending';
+      sendBtn.disabled = true;
+
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim()
+      };
+
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          statusBox.textContent = 'Sent! Thanks — I\'ll get back to you soon.';
+          statusBox.className = 'status ok';
+          form.reset();
+        } else {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.message || 'Submission failed');
+        }
+      } catch (err) {
+        statusBox.textContent = 'Sorry, could not send. Please email me at ayushf007@gmail.com.';
+        statusBox.className = 'status err';
+      } finally {
+        sendBtn.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
