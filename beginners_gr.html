@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beginner’s Guide to General Relativity – Ayush Fotedar</title>
+  <style>
+    :root{--bg-overlay:rgba(10,10,25,.75);--accent:#ffdd57;--text:#eaeaea;--muted:#bdbdbd;--card:rgba(0,0,0,.55)}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,.2),transparent 50%),var(--bg-overlay);pointer-events:none;z-index:0}
+    .wrap{position:relative;z-index:1}
+    .topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;z-index:2}
+    .identity{display:flex;align-items:center;gap:.65rem}
+    .identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);object-fit:cover}
+    .identity .name{font-weight:800;letter-spacing:.3px;color:var(--accent)}
+    .navlinks a{color:var(--text);text-decoration:none;font-weight:700;opacity:.9}
+    .navlinks a:hover{color:#fff}
+    main{max-width:980px;margin:7vh auto 4rem;padding:0 1rem}
+    .lead{color:var(--muted)}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;margin:.75rem 0}
+    h1{color:var(--accent);margin:.2rem 0 .6rem}
+    h2{color:var(--accent);margin:1.4rem 0 .5rem}
+    h3{margin:1rem 0 .4rem}
+    .toc{display:grid;gap:.5rem;margin:1rem 0}
+    .toc a{color:var(--text);text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.55rem .7rem;border-radius:10px}
+    .toc a:hover{background:rgba(255,255,255,.12)}
+    code.eq{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.15rem .35rem;border-radius:6px}
+    ul{margin:.4rem 0 .8rem}
+    .note{font-size:.95rem;color:var(--muted)}
+    footer{text-align:center;color:var(--muted);padding:2rem 1rem 3rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="identity">
+        <img src="profile_photo_me.jpg" alt="Ayush Fotedar"><span class="name">Ayush Fotedar</span>
+      </div>
+      <nav class="navlinks"><a href="index.html">Home</a></nav>
+    </header>
+
+    <main>
+      <h1>Beginner’s Guide to General Relativity</h1>
+      <p class="lead">An intuitive, math‑light tour of spacetime, curvature, and gravity‑as‑geometry. We’ll connect special relativity to Einstein’s field equation, touch classic tests, and peek at black holes, waves, and cosmology.</p>
+
+      <div class="card">
+        <strong>Contents</strong>
+        <nav class="toc">
+          <a href="#what">What is GR?</a>
+          <a href="#ideas">Core ideas</a>
+          <a href="#sr-to-gr">From SR to GR</a>
+          <a href="#geodesics">Free fall & geodesics</a>
+          <a href="#efe">Einstein’s field equation</a>
+          <a href="#tests">Classic tests</a>
+          <a href="#bh-gw">Black holes & gravitational waves</a>
+          <a href="#cosmo">Cosmology in one page</a>
+          <a href="#next">Where to go next</a>
+        </nav>
+      </div>
+
+      <section id="what" class="card">
+        <h2>What is GR?</h2>
+        <p>General Relativity (GR) is Einstein’s theory of gravity. Instead of a force acting at a distance, gravity is the <em>curvature of spacetime</em>. Matter tells spacetime how to curve; curved spacetime tells matter how to move.</p>
+        <p class="note">“Spacetime” = 3D space + time as a unified 4D arena. Distances in spacetime are measured by the <em>metric</em>, which generalizes the Pythagorean theorem to include time.</p>
+      </section>
+
+      <section id="ideas" class="card">
+        <h2>Core ideas</h2>
+        <ul>
+          <li><strong>Equivalence principle:</strong> Locally, you can’t distinguish uniform acceleration from a gravitational field. In a freely falling elevator, physics looks like it does in gravity‑free space.</li>
+          <li><strong>Geometry, not force:</strong> Free‑falling objects follow the straightest possible paths (geodesics) in curved spacetime.</li>
+          <li><strong>Curvature from matter/energy:</strong> Mass–energy (including pressure) curves spacetime; curvature feeds back into motion.</li>
+          <li><strong>Local vs global:</strong> Over tiny regions, spacetime looks flat; globally it can be curved (like a sphere looks flat on small patches).</li>
+        </ul>
+      </section>
+
+      <section id="sr-to-gr" class="card">
+        <h2>From Special Relativity to General Relativity</h2>
+        <p>Special Relativity (SR) unifies space and time and replaces absolute time with invariant <em>spacetime intervals</em>. GR keeps SR’s local structure but allows the metric to vary from place to place due to gravity.</p>
+        <ul>
+          <li>SR uses the flat Minkowski metric: <code class="eq">ds² = -c²dt² + dx² + dy² + dz²</code>.</li>
+          <li>GR uses a position‑dependent metric <code class="eq">g<sub>μν</sub>(x)</code> so that <code class="eq">ds² = g<sub>μν</sub> dx<sup>μ</sup> dx<sup>ν</sup></code>.</li>
+          <li>Curvature is encoded in derivatives of <code class="eq">g<sub>μν}</code>; when curvature vanishes you recover SR.</li>
+        </ul>
+      </section>
+
+      <section id="geodesics" class="card">
+        <h2>Free fall & geodesics</h2>
+        <p>In GR, the trajectory of a freely falling particle extremizes the spacetime interval—it’s a geodesic. In flat space, geodesics are straight lines; on a sphere, they’re great circles; in curved spacetime, they’re the natural generalization.</p>
+        <ul>
+          <li>Light follows <em>null</em> geodesics (<code class="eq">ds² = 0</code>), massive particles follow <em>timelike</em> geodesics (<code class="eq">ds² &lt; 0</code> in the (-,+,+,+) convention).</li>
+          <li>Gravity doesn’t “pull”; rather, spacetime geometry guides motion.</li>
+        </ul>
+      </section>
+
+      <section id="efe" class="card">
+        <h2>Einstein’s field equation (without tears)</h2>
+        <p>The heart of GR relates curvature to energy–momentum:</p>
+        <p><code class="eq">G<sub>μν</sub> = (8πG/c⁴) 
+          T<sub>μν</sub></code></p>
+        <ul>
+          <li><strong><code>G<sub>μν</sub></code></strong>: built from the metric and its derivatives; it captures spacetime curvature.</li>
+          <li><strong><code>T<sub>μν</sub></code></strong>: energy–momentum tensor of matter/fields (includes energy density, momentum flow, pressure).</li>
+          <li>The equation says: energy and momentum shape the geometry.</li>
+        </ul>
+        <p class="note">You don’t need the full tensor machinery to appreciate GR’s predictions; many classic results follow from symmetry and simple limits.</p>
+      </section>
+
+      <section id="tests" class="card">
+        <h2>Classic tests</h2>
+        <ul>
+          <li><strong>Mercury’s perihelion advance:</strong> GR predicts a small extra precession (~43″/century) beyond Newtonian gravity.</li>
+          <li><strong>Deflection of starlight:</strong> Light bends near the Sun; first measured during the 1919 eclipse.</li>
+          <li><strong>Gravitational redshift & time dilation:</strong> Clocks lower in a gravitational potential run slightly slower.</li>
+          <li><strong>Shapiro delay:</strong> Light takes extra time to pass near massive bodies due to curvature.</li>
+        </ul>
+      </section>
+
+      <section id="bh-gw" class="card">
+        <h2>Black holes & gravitational waves</h2>
+        <h3>Black holes</h3>
+        <ul>
+          <li><strong>Schwarzschild black hole:</strong> Non‑rotating, spherically symmetric. Event horizon at <code class="eq">r = 2GM/c²</code>.</li>
+          <li><strong>Kerr black hole:</strong> Rotating; has an ergosphere and frame dragging.</li>
+        </ul>
+        <h3>Gravitational waves</h3>
+        <p>Ripples in spacetime produced by accelerating masses (e.g., merging black holes). They travel at the speed of light and carry energy. LIGO/Virgo/KAGRA detect these tiny strains, opening a new window on the Universe.</p>
+      </section>
+
+      <section id="cosmo" class="card">
+        <h2>Cosmology in one page</h2>
+        <p>Assuming the Universe is homogeneous and isotropic on large scales leads to the FLRW metric and the Friedmann equations. The scale factor <code class="eq">a(t)</code> encodes expansion; the Hubble parameter is <code class="eq">H = \dot a/a</code>.</p>
+        <ul>
+          <li>Different energy contents (matter, radiation, dark energy) drive different expansion histories.</li>
+          <li>Distances (comoving, luminosity, angular diameter) follow from the metric and <code class="eq">a(t)</code>.</li>
+        </ul>
+      </section>
+
+      <section id="next" class="card">
+        <h2>Where to go next</h2>
+        <ul>
+          <li>Skim my <a href="textbook_recommendations.html">Textbook Recommendations</a> (GR picks at the end).</li>
+          <li>Work simple problems: redshift in a weak field, geodesics on a sphere, perihelion precession outline.</li>
+          <li>Then add math: 4‑vectors, metrics, Christoffel symbols, curvature tensors, and the geodesic equation.</li>
+        </ul>
+        <p class="note">If you’re comfortable with calculus and linear algebra, you can learn the tensor tools progressively—start with index notation and the idea that raising/lowering indices uses the metric.</p>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> Ayush Fotedar</footer>
+  </div>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
