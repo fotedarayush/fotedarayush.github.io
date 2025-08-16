@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quantum Mechanics – A Gentle Start • Ayush Fotedar</title>
+  <style>
+    :root{--bg-overlay:rgba(10,10,25,.75);--accent:#ffdd57;--text:#eaeaea;--muted:#bdbdbd;--card:rgba(0,0,0,.55)}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:url('profile_photo_stars.jpg') center/cover fixed no-repeat;position:relative}
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(80% 80% at 70% 30%,rgba(0,0,0,.2),transparent 50%),var(--bg-overlay);pointer-events:none;z-index:0}
+    .wrap{position:relative;z-index:1}
+    .topbar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;z-index:2}
+    .identity{display:flex;align-items:center;gap:.65rem}
+    .identity img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);object-fit:cover}
+    .identity .name{font-weight:800;letter-spacing:.3px;color:var(--accent)}
+    .navlinks a{color:var(--text);text-decoration:none;font-weight:700;opacity:.9}
+    .navlinks a:hover{color:#fff}
+    main{max-width:980px;margin:7vh auto 4rem;padding:0 1rem}
+    .lead{color:var(--muted)}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;margin:.75rem 0}
+    h1{color:var(--accent);margin:.2rem 0 .6rem}
+    h2{color:var(--accent);margin:1.4rem 0 .5rem}
+    h3{margin:1rem 0 .4rem}
+    .toc{display:grid;gap:.5rem;margin:1rem 0}
+    .toc a{color:var(--text);text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.55rem .7rem;border-radius:10px}
+    .toc a:hover{background:rgba(255,255,255,.12)}
+    code.eq{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.15rem .35rem;border-radius:6px}
+    ul{margin:.4rem 0 .8rem}
+    .note{font-size:.95rem;color:var(--muted)}
+    .back-links{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+    .btn{display:inline-block;padding:.55rem .9rem;border-radius:10px;font-weight:700;text-decoration:none}
+    .btn-ghost{background:rgba(255,255,255,.08);color:var(--text);border:1px solid rgba(255,255,255,.12)}
+    .btn-ghost:hover{background:var(--accent);color:#111;border-color:rgba(0,0,0,.15)}
+    footer{text-align:center;color:var(--muted);padding:2rem 1rem 3rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="identity">
+        <img src="profile_photo_me.jpg" alt="Ayush Fotedar"><span class="name">Ayush Fotedar</span>
+      </div>
+      <nav class="navlinks"><a href="index.html">Home</a></nav>
+    </header>
+
+    <main>
+      <h1>Quantum Mechanics: A Gentle Start</h1>
+      <p class="lead">An intuition‑first tour of core concepts: wave–particle duality, Schrödinger’s equation, probability, tunnelling, multi‑D wells & degeneracy, the harmonic oscillator, and the leap to spherical coordinates & spherical harmonics.</p>
+
+      <div class="card">
+        <strong>Contents</strong>
+        <nav class="toc">
+          <a href="#duality">Wave–Particle Duality</a>
+          <a href="#schrodinger">Schrödinger’s Equation</a>
+          <a href="#probability">Probability & Normalisation</a>
+          <a href="#uncertainty">Uncertainty Principle</a>
+          <a href="#tunnelling">Tunnelling through a Barrier</a>
+          <a href="#multid">From 1D to 2D/3D: Infinite Wells</a>
+          <a href="#degeneracy">Degeneracy & Symmetry</a>
+          <a href="#oscillator">Harmonic Oscillator (1D, 2D, 3D)</a>
+          <a href="#spherical">Spherical Coordinates & Separation</a>
+          <a href="#sph-harm">Spherical Harmonics & Quantum Numbers</a>
+          <a href="#radial">Radial Probability & Expectation Values</a>
+        </nav>
+      </div>
+
+      <section id="duality" class="card">
+        <h2>Wave–Particle Duality</h2>
+        <p>Quantum objects behave like waves <em>and</em> particles. De Broglie linked momentum and wavelength:</p>
+        <p><code class="eq">p = \hbar k = h/\lambda</code>, <code class="eq">E = \hbar\,\omega</code></p>
+        <p>Interference patterns (e.g., electron double‑slit) show that probability amplitudes add like waves; measured hits arrive as particles.</p>
+      </section>
+
+      <section id="schrodinger" class="card">
+        <h2>Schrödinger’s Equation</h2>
+        <p>In 1D the time‑dependent equation is</p>
+        <p><code class="eq">i\hbar\,\partial_t\psi(x,t) = \left[-\tfrac{\hbar^2}{2m}\,\partial_x^2 + V(x,t)\right]\psi(x,t)</code></p>
+        <p>For time‑independent potentials, separate variables: <code class="eq">\psi(x,t)=e^{-iEt/\hbar}\,u(x)</code>. Then</p>
+        <p><code class="eq">-\tfrac{\hbar^2}{2m}u''(x)+V(x)u(x)=E u(x)</code></p>
+        <p class="note">Physical solutions are single‑valued, finite, continuous (with justified exceptions in the derivative), and normalisable.</p>
+      </section>
+
+      <section id="probability" class="card">
+        <h2>Probability & Normalisation</h2>
+        <ul>
+          <li>Probability density: <code class="eq">P(x,t)=|\psi(x,t)|^2</code>. For stationary states: <code class="eq">P(x)=|u(x)|^2</code>.</li>
+          <li>Normalisation: <code class="eq">\int_{-\infty}^{\infty}|u(x)|^2\,dx = 1</code>.</li>
+          <li>Expectation of an operator <code class="eq">\hat O</code>: <code class="eq">\langle O\rangle=\int u^*(x)\,\hat O\,u(x)\,dx</code>.</li>
+        </ul>
+      </section>
+
+      <section id="uncertainty" class="card">
+        <h2>Uncertainty Principle</h2>
+        <p>Wave nature implies intrinsic spreads:</p>
+        <p><code class="eq">\Delta x\,\Delta p \ge \tfrac{\hbar}{2}</code>, <code class="eq">\Delta t\,\Delta E \ge \tfrac{\hbar}{2}</code></p>
+        <p>Localising a wave packet in space demands many momenta (Fourier components), increasing <code class="eq">\Delta p</code>.</p>
+      </section>
+
+      <section id="tunnelling" class="card">
+        <h2>Tunnelling through a Barrier</h2>
+        <p>For energy <code class="eq">E&lt;V_0</code> and barrier width <code class="eq">b</code>, solutions decay inside the barrier yet yield non‑zero transmission <code class="eq">T</code>. In the large‑barrier limit,</p>
+        <p><code class="eq">T \propto e^{-2\alpha b}</code> with <code class="eq">\alpha = \sqrt{\tfrac{2m}{\hbar^2}(V_0-E)}</code>.</p>
+        <p>For <code class="eq">E&gt;V_0</code> you get oscillatory solutions inside, resonances, and energy‑dependent <code class="eq">T</code>.</p>
+      </section>
+
+      <section id="multid" class="card">
+        <h2>From 1D to 2D/3D: Infinite Wells</h2>
+        <p>In multiple dimensions the time‑independent equation is</p>
+        <p><code class="eq">-\tfrac{\hbar^2}{2m}\,\nabla^2 u(\mathbf r) + V(\mathbf r)u(\mathbf r) = E\,u(\mathbf r)</code></p>
+        <ul>
+          <li>If <code class="eq">V(\mathbf r)=V_x(x)+V_y(y)+V_z(z)</code>, the wavefunction separates: <code class="eq">u= X(x)Y(y)Z(z)</code>.</li>
+          <li>Rectangular infinite wells in 2D/3D yield discrete energies with independent quantum numbers per axis.</li>
+        </ul>
+      </section>
+
+      <section id="degeneracy" class="card">
+        <h2>Degeneracy & Symmetry</h2>
+        <p>Symmetries of the potential produce degenerate energy levels (different states, same energy). For a square 2D well (<code class="eq">a=b</code>) or isotropic 3D boxes, states like <code class="eq">(n_x,n_y)=(1,2)</code> and <code class="eq">(2,1)</code> are degenerate. Linear combinations are equally valid and often reveal the symmetry more clearly.</p>
+      </section>
+
+      <section id="oscillator" class="card">
+        <h2>Harmonic Oscillator (1D, 2D, 3D)</h2>
+        <ul>
+          <li>1D: <code class="eq">V=\tfrac12 m\omega^2 x^2</code>, energies <code class="eq">E_n=(n+\tfrac12)\hbar\omega</code>, eigenstates involve Hermite polynomials.</li>
+          <li>3D isotropic: <code class="eq">V=\tfrac12 m\omega^2(x^2+y^2+z^2)</code>, energies <code class="eq">E_{n_x n_y n_z}=\hbar\omega(n_x+n_y+n_z+\tfrac32)</code> with characteristic degeneracies.</li>
+          <li>2D isotropic: zero‑point energy <code class="eq">\hbar\omega</code>; non‑isotropic cases split degeneracies.</li>
+        </ul>
+      </section>
+
+      <section id="spherical" class="card">
+        <h2>Spherical Coordinates & Separation</h2>
+        <p>For spherically symmetric potentials <code class="eq">V(r)</code>, change variables and separate:</p>
+        <p><code class="eq">u(r,\theta,\phi)=R(r)Y(\theta,\phi)</code></p>
+        <p>The radial and angular parts decouple; the angular equation yields spherical harmonics.</p>
+      </section>
+
+      <section id="sph-harm" class="card">
+        <h2>Spherical Harmonics & Quantum Numbers</h2>
+        <ul>
+          <li>Angular solutions: <code class="eq">Y_{\ell m}(\theta,\phi)</code> with <code class="eq">\ell\ge0</code> and <code class="eq">-\ell\le m\le\ell</code>.</li>
+          <li>They are orthonormal on the sphere and encode angular momentum quantisation; each <code class="eq">\ell</code> gives <code class="eq">2\ell+1</code> degenerate <code class="eq">m</code> states.</li>
+        </ul>
+      </section>
+
+      <section id="radial" class="card">
+        <h2>Radial Probability & Expectation Values</h2>
+        <p>With <code class="eq">u=R(r)Y(\theta,\phi)</code> and normalised <code class="eq">R</code>, the radial probability density is</p>
+        <p><code class="eq">P(r)=r^2 |R(r)|^2</code></p>
+        <p>Expectations like <code class="eq">\langle r\rangle</code> follow from <code class="eq">\int_0^\infty r\,P(r)\,dr</code>. Maxima of <code class="eq">P(r)</code> give most‑probable radii (useful for oscillator and hydrogenic problems).</p>
+      </section>
+
+      <div class="back-links">
+        <a class="btn btn-ghost" href="articles.html">← Back to Articles</a>
+        <a class="btn btn-ghost" href="index.html#home">Home</a>
+      </div>
+    </main>
+
+    <footer>© <span id="year"></span> Ayush Fotedar</footer>
+  </div>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
