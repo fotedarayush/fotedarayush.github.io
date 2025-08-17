@@ -93,7 +93,90 @@
         <div class="content">
           <details id="euclidean" class="subsec">
   <summary>Euclidean Geometry</summary>
-  <div class="content">$1</div>
+  <div class="content">
+  <p><strong>Goal:</strong> Set up coordinates and vectors in flat (Euclidean) space and introduce the notation used throughout GR.</p>
+
+  <h4>Conventions & Notation</h4>
+  <ul>
+    <li>Indices: Roman <em>i, j, k</em> label spatial components (1,2,3,…,n). Greek <em>μ, ν, σ</em> will later label spacetime (0,1,2,3).</li>
+    <li>Einstein summation: repeated indices are summed, e.g. \(A = x^j e_j = x^1 e_1 + x^2 e_2 + \cdots\).</li>
+    <li>Upper vs lower indices are labels, not powers: \(x^\mu\) is a component, not “\(x\) to a power”.</li>
+  </ul>
+
+  <h4>Basis in \(\mathbb{E}^3\)</h4>
+  <p>
+    Standard Cartesian basis: \(\mathbf{i}=(1,0,0),\ \mathbf{j}=(0,1,0),\ \mathbf{k}=(0,0,1)\).  
+    A point has position vector \(\mathbf{r}=x\,\mathbf{i}+y\,\mathbf{j}+z\,\mathbf{k}\).  
+    In \(n\)D we choose a linearly-independent set \(\mathcal{B}=\{e_1,\dots,e_n\}\); if \(x^1 e_1+\cdots + x^n e_n=0\) then \(x^1=\cdots=x^n=0\).
+  </p>
+
+  <h4>Contravariant & Covariant Components (Natural vs Dual Basis)</h4>
+  <p>
+    In a (possibly skew) coordinate system \((u,v)\) with natural basis \(\{e_1\equiv e_u,\ e_2\equiv e_v\}\),
+    a vector expands as
+    \[
+      \mathbf{C}=C^i e_i = C^1 e_1 + C^2 e_2,
+    \]
+    where \(C^i\) are <em>contravariant</em> components (often shown as a column vector).
+  </p>
+  <p>
+    The <em>dual basis</em> \(\{e^1, e^2\}\) satisfies \(e^i\!\cdot e_j=\delta^i{}_j\).
+    Using it we also have the <em>covariant</em> expansion
+    \[
+      \mathbf{C}=C_i e^i, \qquad C_i=(C_1, C_2)\ \text{(row vector)}.
+    \]
+    In orthonormal Cartesian coordinates the natural and dual bases coincide, which hides this distinction in elementary vector calculus.
+  </p>
+
+  <h4>Metric Tensor, Inner Product & Kronecker Delta</h4>
+  <p>
+    The metric encodes lengths and angles:
+    \[
+      g_{ij}=e_i\cdot e_j,\qquad g^{ij}=e^i\cdot e^j,\qquad g_{ij}\,g^{jk}=\delta_i{}^{k}.
+    \]
+    For any \(\lambda,\mu\), the scalar product can be written
+    \[
+      \lambda\cdot\mu = g_{ij}\,\lambda^i\,\mu^j = \lambda_i\,\mu^i.
+    \]
+  </p>
+
+  <h4>Line Element</h4>
+  <p>
+    Parametrise a curve by coordinates \(u^i(t)\). The infinitesimal displacement is
+    \( \mathrm{d}\mathbf{s}=e_i\,\mathrm{d}u^i\), and the squared length is the
+    <em>line element</em>:
+    \[
+      \boxed{\ \mathrm{d}s^2=g_{ij}\,\mathrm{d}u^i\,\mathrm{d}u^j\ }.
+    \]
+  </p>
+
+  <h4>Examples</h4>
+  <ul>
+    <li><strong>Cartesian (2D/3D):</strong>
+      \(\mathrm{d}s^2=\mathrm{d}x^2+\mathrm{d}y^2\) (2D) or
+      \(\mathrm{d}s^2=\mathrm{d}x^2+\mathrm{d}y^2+\mathrm{d}z^2\) (3D).  
+      Hence \(g_{ij}=\mathrm{diag}(1,1)\) or \(\mathrm{diag}(1,1,1)\).
+    </li>
+    <li><strong>Plane polar (2D):</strong> with \(x=r\cos\theta,\ y=r\sin\theta\),
+      \[
+        \mathrm{d}x=\cos\theta\,\mathrm{d}r - r\sin\theta\,\mathrm{d}\theta,\qquad
+        \mathrm{d}y=\sin\theta\,\mathrm{d}r + r\cos\theta\,\mathrm{d}\theta,
+      \]
+      which gives
+      \[
+        \mathrm{d}s^2=\mathrm{d}r^2 + r^2\,\mathrm{d}\theta^2,\qquad
+        g_{ij}=\begin{pmatrix}1&0\\[2pt]0&r^2\end{pmatrix}.
+      \]
+    </li>
+  </ul>
+
+  <h4>Key Takeaways</h4>
+  <ul>
+    <li>Natural (basis) vs dual basis matters away from orthonormal frames; components with upper vs lower indices transform differently.</li>
+    <li>The metric \(g_{ij}\) and its inverse \(g^{ij}\) relate covariant and contravariant components and define lengths/angles.</li>
+    <li>\(\delta_i{}^{k}\) is the identity that results from \(g_{ij}g^{jk}=\delta_i{}^{k}\).</li>
+  </ul>
+</div>
 </details>
           <details id="basis" class="subsec">
   <summary>Natural Basis Vectors</summary>
