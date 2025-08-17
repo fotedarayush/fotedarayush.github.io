@@ -37,6 +37,11 @@
     details>summary{cursor:pointer;list-style:none;padding:1rem 1.1rem;font-weight:800;color:var(--accent)}
     details>summary::-webkit-details-marker{display:none}
     details .content{padding:0 1.1rem 1rem}
+      /* Nested dropdown sections */
+    details.subsec{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;margin:.6rem 0}
+    details.subsec>summary{cursor:pointer;list-style:none;padding:.6rem .7rem;font-weight:700;color:var(--text)}
+    details.subsec>summary:hover{color:#fff}
+    details.subsec .content{padding:0 .7rem .7rem}
   </style>
   <!-- MathJax for LaTeX rendering -->
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -83,46 +88,25 @@
       </div>
 
       <!-- PART I -->
-      <details id="part1" class="card" open>
+      <details id="part1" class="card">
         <summary>Part I — Elements of Differential Geometry</summary>
         <div class="content">
-          <section id="euclidean">
-            <h3>Euclidean Geometry</h3>
-            <p>
-              In flat 3D space with Cartesian coordinates \((x,y,z)\), the metric is \(\delta_{ij}\) and the line element is
-              \[ \mathrm d\ell^2 = \delta_{ij}\,\mathrm d x^i\,\mathrm d x^j = \mathrm d x^2 + \mathrm d y^2 + \mathrm d z^2. \]
-              Inner products and lengths follow from this metric; rotations preserve \(\delta_{ij}\).
-            </p>
-          </section>
-          <section id="basis">
-            <h3>Natural Basis Vectors</h3>
-            <p>
-              A coordinate chart \(x^i\) induces a <em>coordinate (natural) basis</em> \(\{\partial/\partial x^i\}\) for tangent vectors and a
-              dual basis \(\{\mathrm d x^i\}\) for covectors. Under a change of coordinates \(x^i\to x^{i'}\), components transform via
-              the Jacobian: \(V^{i'} = \frac{\partial x^{i'}}{\partial x^j} V^j\). Tensors are multilinear maps built from these bases.
-            </p>
-          </section>
-          <section id="metric">
-            <h3>Metric Tensor & Line Element</h3>
-            <p>
-              The metric \(g_{\mu\nu}(x)\) generalises \(\delta_{ij}\) to curved spacetime (signature \((- + + +)\) used here). It lowers indices
-              and defines proper time \(\mathrm d\tau\) for timelike paths via
-              \[ -c^2\,\mathrm d\tau^2 = g_{\mu\nu}\,\mathrm d x^{\mu}\,\mathrm d x^{\nu}. \]
-              The inverse \(g^{\mu\nu}\) raises indices and satisfies \(g^{\mu\alpha}g_{\alpha\nu}=\delta^{\mu}{}_{\nu}.\)
-            </p>
-          </section>
-          <section id="connection-curvature">
-            <h3>Affine Connection & Curvature</h3>
-            <p>
-              Metric compatibility and torsion‑free assumption give the Levi‑Civita connection (Christoffel symbols)
-              \[ \Gamma^{\rho}{}_{\mu\nu} = \tfrac12 g^{\rho\sigma}\big(\partial_{\mu} g_{\nu\sigma}+\partial_{\nu} g_{\mu\sigma}-\partial_{\sigma} g_{\mu\nu}\big). \]
-              Geodesics obey
-              \[ \frac{\mathrm d^2 x^{\rho}}{\mathrm d\lambda^2} + \Gamma^{\rho}{}_{\mu\nu}\,\frac{\mathrm d x^{\mu}}{\mathrm d\lambda}\,\frac{\mathrm d x^{\nu}}{\mathrm d\lambda} = 0. \]
-              Curvature is described by the Riemann tensor
-              \[ R^{\rho}{}_{\sigma\mu\nu} = \partial_{\mu}\Gamma^{\rho}{}_{\nu\sigma} - \partial_{\nu}\Gamma^{\rho}{}_{\mu\sigma} + \Gamma^{\rho}{}_{\mu\lambda}\Gamma^{\lambda}{}_{\nu\sigma} - \Gamma^{\rho}{}_{\nu\lambda}\Gamma^{\lambda}{}_{\mu\sigma}. \]
-              Contractions yield the Ricci tensor \(R_{\mu\nu}\) and scalar \(R\); the Bianchi identities imply \(\nabla_{\mu} G^{\mu\nu}=0\).
-            </p>
-          </section>
+          <details id="euclidean" class="subsec">
+  <summary>Euclidean Geometry</summary>
+  <div class="content">$1</div>
+</details>
+          <details id="basis" class="subsec">
+  <summary>Natural Basis Vectors</summary>
+  <div class="content">$1</div>
+</details>
+          <details id="metric" class="subsec">
+  <summary>Metric Tensor &amp; Line Element</summary>
+  <div class="content">$1</div>
+</details>
+          <details id="connection-curvature" class="subsec">
+  <summary>Affine Connection &amp; Curvature</summary>
+  <div class="content">$1</div>
+</details>
         </div>
       </details>
 
@@ -130,30 +114,18 @@
       <details id="part2" class="card">
         <summary>Part II — Spacetime & Causal Structure</summary>
         <div class="content">
-          <section id="newton-galileo">
-            <h3>Classical View of Newton & Galileo</h3>
-            <p>
-              Classical mechanics assumes absolute time and Galilean transformations between inertial frames.
-              Newtonian gravity is instantaneous action at a distance with potential \(\Phi\) obeying \(\nabla^2\Phi = 4\pi G\rho\).
-              These ideas conflict with finite signal speed and Maxwell’s equations.
-            </p>
-          </section>
-          <section id="lorentz">
-            <h3>Lorentz Transformations</h3>
-            <p>
-              Special Relativity replaces absolute time with invariant interval
-              \[ \mathrm d s^2 = -c^2\,\mathrm d t^2 + \mathrm d x^2 + \mathrm d y^2 + \mathrm d z^2, \]
-              preserved by Lorentz transformations. Consequences: time dilation \(\gamma=1/\sqrt{1-v^2/c^2}\), length contraction, and
-              relativity of simultaneity. Four‑vectors and tensors keep equations covariant.
-            </p>
-          </section>
-          <section id="causality">
-            <h3>Relativistic Effects of Causality</h3>
-            <p>
-              Light cones partition events into timelike, lightlike, and spacelike separations. Timelike‑separated events can influence each other;
-              spacelike ones cannot without violating causality. Proper time along timelike worldlines is invariant; null worldlines satisfy \(\mathrm d s^2=0\).
-            </p>
-          </section>
+          <details id="newton-galileo" class="subsec">
+  <summary>Classical View of Newton &amp; Galileo</summary>
+  <div class="content">$1</div>
+</details>
+          <details id="lorentz" class="subsec">
+  <summary>Lorentz Transformations</summary>
+  <div class="content">$1</div>
+</details>
+          <details id="causality" class="subsec">
+  <summary>Relativistic Effects of Causality</summary>
+  <div class="content">$1</div>
+</details>
         </div>
       </details>
 
@@ -161,38 +133,22 @@
       <details id="part3" class="card">
         <summary>Part III — The Einstein Field Equations</summary>
         <div class="content">
-          <section id="efe">
-            <h3>The Einstein Field Equations</h3>
-            <p>
-              The geometric side is the Einstein tensor \(G_{\mu\nu}=R_{\mu\nu}-\tfrac12 R g_{\mu\nu}\). The field equations with cosmological constant are
-              \[ G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4}\,T_{\mu\nu}. \]
-              Covariant conservation \(\nabla_{\mu}T^{\mu\nu}=0\) follows from the Bianchi identities. The Newtonian limit recovers \(\nabla^2\Phi=4\pi G\rho\).
-            </p>
-          </section>
-          <section id="schwarzschild">
-            <h3>The Schwarzschild Solution</h3>
-            <p>
-              For vacuum, static, spherically symmetric spacetimes,
-              \[ \mathrm d s^2 = -\left(1-\frac{2GM}{r c^2}\right)c^2\,\mathrm d t^2 + \left(1-\frac{2GM}{r c^2}\right)^{-1}\!\mathrm d r^2 + r^2(\mathrm d\theta^2+\sin^2\!\theta\,\mathrm d\phi^2). \]
-              Predictions include perihelion advance, light bending, gravitational redshift, Shapiro delay, and the event horizon at \(r_s=2GM/c^2\).
-            </p>
-          </section>
-          <section id="exotic">
-            <h3>Exotic Solutions: Other Black Holes, Wormholes & Cosmology</h3>
-            <ul>
-              <li><strong>Kerr</strong> (rotating BH): frame dragging, ergosphere, \(a=J/Mc\), horizons \(r_\pm\).</li>
-              <li><strong>Reissner–Nordström</strong> (charged BH): inner/outer horizons; extremality.</li>
-              <li><strong>Wormholes</strong>: Morris–Thorne metrics require exotic matter (violations of energy conditions).</li>
-              <li><strong>FLRW cosmology</strong>: homogeneous/isotropic Universe with scale factor \(a(t)\); Friedmann equations govern expansion.</li>
-            </ul>
-          </section>
-          <section id="penrose">
-            <h3>Penrose Diagrams & Conformal Infinity</h3>
-            <p>
-              Conformal compactification rescales the metric to bring infinity to a finite boundary; null infinity \(\mathscr I^{\pm}\) represents endpoints of light rays.
-              Kruskal–Szekeres coordinates extend Schwarzschild across the horizon; Penrose diagrams depict causal structure globally.
-            </p>
-          </section>
+          <details id="efe" class="subsec">
+  <summary>The Einstein Field Equations</summary>
+  <div class="content">$1</div>
+</details>
+          <details id="schwarzschild" class="subsec">
+  <summary>The Schwarzschild Solution</summary>
+  <div class="content">$1</div>
+</details>
+          <details id="exotic" class="subsec">
+  <summary>Exotic Solutions: Other Black Holes, Wormholes &amp; Cosmology</summary>
+  <div class="content">$1</div>
+</details>
+          <details id="penrose" class="subsec">
+  <summary>Penrose Diagrams &amp; Conformal Infinity</summary>
+  <div class="content">$1</div>
+</details>
         </div>
       </details>
 
@@ -200,19 +156,10 @@
       <details id="part4" class="card">
         <summary>Part IV — The Physics of Black Holes</summary>
         <div class="content">
-          <section id="collapse">
-            <h3>Gravitational Collapse & Particle Motion</h3>
-            <p>
-              <strong>Test‑particle motion:</strong> in Schwarzschild, timelike geodesics reduce to an effective 1D problem with potential
-              \[ V_\text{eff}(r)=\left(1-\frac{2GM}{rc^2}\right)\!\left(c^2+\frac{L^2}{r^2}\right). \]
-              Stable circular orbits exist for \(r>3 r_s\); the ISCO for test particles is at \(r=3 r_s\) (photons at \(r=1.5 r_s\)).
-            </p>
-            <p>
-              <strong>Collapse:</strong> pressureless (Oppenheimer–Snyder) collapse shows horizon formation and singularity development for sufficiently compact masses.
-              External observers never see matter cross the horizon (in coordinate time), while infalling observers do so in finite proper time.
-            </p>
-            <p class="note">Further physics (Hawking radiation, BH thermodynamics, accretion disks, jets) extends beyond GR’s classical scope but fits naturally on this geometric background.</p>
-          </section>
+          <details id="collapse" class="subsec">
+  <summary>Gravitational Collapse &amp; Particle Motion</summary>
+  <div class="content">$1</div>
+</details>
         </div>
       </details>
 
